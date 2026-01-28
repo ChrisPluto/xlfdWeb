@@ -1,0 +1,177 @@
+{{ define "main" }}
+{{ $pages := where .Site.RegularPages "Section" "daily" }}
+{{ $curY := .Date.Format "2006" }}
+{{ $curYM := .Date.Format "2006-01" }}
+
+<style>
+  :root { --text: 18px; --line: 1.8; } /* 你想更大就把 18 改 19/20 */
+
+  .layout { display:flex; gap:0; }
+
+  /* 左侧 */
+  .sidebar {
+    width: 360px;                 /* 原 320 -> 360 更舒服 */
+    border-right:1px solid #ddd;
+    padding: 16px 14px;
+    height: calc(100vh - 56px);
+    overflow:auto;
+  }
+
+  /* 右侧内容 */
+  .content {
+    flex:1;
+    padding: 22px 28px;
+    height: calc(100vh - 56px);
+    overflow:auto;
+    font-size: var(--text);
+    line-height: var(--line);
+  }
+
+  .breadcrumbs{
+    color:#777;
+    font-size: 18px;              /* 原 18 -> 20 */
+    margin: 1px 0 5px;
+  }
+
+  .tree details{ margin: 8px 0; }
+  .tree summary{
+    cursor:pointer;
+    user-select:none;
+    font-weight:800;
+    font-size: 14px;              /* 原 18 -> 19 */
+  }
+
+  .month-details { margin: 8px 0; }
+  .month-summary{
+    cursor:pointer;
+    user-select:none;
+    font-weight:800;
+    padding: 8px 10px;            /* 更好点 */
+    border-radius:10px;
+    font-size: 18px;              /* 原 17 -> 18 */
+    list-style:none;
+  }
+  .month-summary:hover{ background:#f5f5f5; }
+
+  .day-list{
+    list-style:none;
+    padding-left: 16px;
+    margin: 8px 0 12px;
+  }
+  .day-list li{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    padding: 2px 0;               /* 原 3 -> 6 */
+  }
+  .day-list a{
+    text-decoration:none;
+    font-size: 14px;              /* 原 16 -> 17 */
+  }
+  .day-list a:hover{ text-decoration:underline; }
+  .day-list a.active{ font-weight:900; color:#0a66c2; }
+
+  .back-link{
+    display:inline-block;
+    margin-bottom: 14px;
+    text-decoration:none;
+    font-size: 14px;
+  }
+  .back-link:hover{ text-decoration:underline; }
+
+  .article{
+    max-width: 980px;             /* 让文章别“铺满整屏”更像你喜欢的主题 */
+    margin: 0 auto;               /* 居中 */
+  }
+
+  .article h1{
+    margin: 10px 0 14px;
+    font-size: 30px;              /* 原 34 -> 40 */
+    line-height: 1.25;
+  }
+  .article .meta{
+    color:#777;
+    margin-bottom: 14px;
+    font-size: 16px;
+  }
+
+  /* 让正文段落更舒服 */
+  .article p{ margin: 0 0 18px; }
+
+
+/* ====== 正文宽度与居中控制 ====== */
+
+/* 整个右侧内容区域 */
+.content {
+  padding: 28px 48px;      /* 比现在更“舒展” */
+}
+
+/* 真正的文章区域 */
+.article {
+  max-width: 1100px;       /* ✅ 核心：放宽正文 */
+  margin: 0 auto;          /* 居中 */
+  line-height: 1.95;
+}
+
+/* 大屏幕再更宽一点 */
+@media (min-width: 1600px) {
+  .article {
+    max-width: 1250px;
+  }
+}
+
+
+</style>
+
+<div class="layout">
+  <!-- 左侧树 -->
+  <aside class="sidebar">
+    <div class="breadcrumbs">我的定投日志 » 守币日记</div>
+
+    <div class="tree">
+      {{ range $yg := (sort ($pages.GroupByDate "2006") "Key" "desc") }}
+        <details {{ if eq $yg.Key $curY }}open{{ end }}>
+          <summary>{{ $yg.Key }} 年</summary>
+
+          {{ range $mg := (sort ($yg.Pages.GroupByDate "2006-01") "Key" "desc") }}
+            {{ $ym := $mg.Key }}
+            <details class="month-details" {{ if eq $ym $curYM }}open{{ end }}>
+              <summary class="month-summary">
+                {{ (time (printf "%s-01" $ym)).Format "1" }}月
+                <span style="color:#999; font-weight:500;">（{{ len $mg.Pages }}）</span>
+              </summary>
+
+              <ul class="day-list">
+                {{ range $p := (sort $mg.Pages "Date" "desc") }}
+                  <li>
+                    <a href="{{ $p.RelPermalink }}" class="{{ if eq $p.RelPermalink $.RelPermalink }}active{{ end }}">
+                      {{ $p.Date.Format "2006-01-02" }}
+                      {{- $m := findRE `收益率[:：]\s*[-+0-9.]+%` $p.Title -}}
+                      {{- if gt (len $m) 0 -}}
+                        ，{{ index $m 0 }}
+                      {{- end -}}
+                    </a>
+                  </li>
+                {{ end }}
+              </ul>
+            </details>
+          {{ end }}
+        </details>
+      {{ end }}
+    </div>
+  </aside>
+
+  <!-- 右侧文章 -->
+  <main class="content">
+    {{/* ✅ 关键：返回本月必须用 relURL，不能用 Site.BaseURL */}}
+<a class="back-link" href='{{ (printf "/mydca/?ym=%s" (.Date.Format "2006-01")) | relURL }}'>← 返回本月</a>
+
+
+    <article class="article">
+      <h1>{{ .Title }}</h1>
+      <div class="meta">{{ .Date.Format "2006-01-02" }}</div>
+      {{ .Content }}
+    </article>
+  </main>
+</div>
+{{ end }}

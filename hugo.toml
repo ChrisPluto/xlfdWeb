@@ -1,0 +1,9 @@
+baseURL = "https://ChrisPluto.github.io/mydca/"
+languageCode = "zh-cn"
+title = "我的定投日志"
+disableKinds = ["taxonomy", "term"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

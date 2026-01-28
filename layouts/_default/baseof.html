@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>{{ .Title }}</title>
+
+  <link rel="stylesheet" href='{{ "css/custom.css" | relURL }}'>
+
+  <!-- ✅ Chart.js：defer 确保在 DOM 解析完成后执行，避免偶发先后顺序问题 -->
+  <script defer src='{{ "js/chart.umd.min.js" | relURL }}'></script>
+</head>
+
+<body>
+<header class="site-header">
+  <a class="site-brand" href='{{ .Site.BaseURL }}'>
+    <img class="site-avatar" src='{{ "images/avatar.png" | relURL }}' alt="avatar"/>
+    <span class="site-title">小李飞刀的定投记录</span>
+  </a>
+
+  <!-- 右侧社交图标 -->
+  <nav class="site-social" aria-label="social links">
+    <a class="social-link" href="https://x.com/xlfdBTC" target="_blank" rel="noopener" title="X / Twitter">
+      <img src='{{ "images/x.png" | relURL }}' alt="X" class="social-icon">
+    </a>
+    <a class="social-link" href="https://www.youtube.com/@Dr_%E5%B0%8F%E6%9D%8E%E9%A3%9E%E5%88%80" target="_blank" rel="noopener" title="YouTube">
+      <img src='{{ "images/youtube.png" | relURL }}' alt="YouTube" class="social-icon">
+    </a>
+  </nav>
+</header>
+
+<main class="site-main">
+  {{ block "main" . }}{{ end }}
+</main>
+
+</body>
+</html>

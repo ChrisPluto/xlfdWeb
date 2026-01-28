@@ -1,0 +1,201 @@
+/* =========================
+   基础（不要用 :root 80% 缩放）
+   ========================= */
+html { font-size: 16px; }   /* 保持浏览器默认基准 */
+
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+               "Noto Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-size: 14px;          /* ✅ 全站基础字号：比默认小一号 */
+  line-height: 1.75;
+  color: #111;
+}
+
+a{ color:#0366d6; text-decoration:none; }
+a:hover{ text-decoration:underline; }
+
+
+/* =========================
+   Header
+   ========================= */
+.site-header{
+  padding: 14px 20px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+}
+
+.site-brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  color:#111;
+}
+
+.site-avatar{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+
+.site-title{
+  font-size: 20px;
+  font-weight: 800;
+}
+
+
+/* =========================
+   主体布局：侧栏 + 正文
+   ========================= */
+.site-main{
+  padding: 20px;
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+}
+
+/* =========================
+   左侧栏：固定宽度（主页/文章页一致）
+   ========================= */
+.sidebar{
+  width: 240px;
+  flex: 0 0 240px;
+  min-width: 240px;
+  padding: 10px;
+}
+
+/* 顶部面包屑：不换行，太长省略号（避免“守币日记”断行） */
+.breadcrumbs{
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* 左侧树/列表：更小、更紧凑 */
+.tree summary { font-size: 14px; }
+.month-summary { font-size: 13.5px; }
+.day-list a { font-size: 13px; }
+.day-list li { padding: 2px 0; }
+
+/* =========================
+   右侧内容区：铺满剩余空间
+   ========================= */
+.content{
+  flex: 1 1 auto;
+  min-width: 0;            /* ✅ 关键：让内容区能正确计算宽度 */
+  padding: 8px 0;
+}
+
+/* 如果主题给文章内容强行 max-width 导致“挤在左边”，解除它 */
+.content, .article{ max-width: none; }
+
+/* 返回本月 */
+.back-link{ font-size: 13px; }
+
+
+/* =========================
+   文章字号体系（重点）
+   ========================= */
+.article h1{
+  font-size: 28px;         /* ✅ 文章主标题更大 */
+  line-height: 1.25;
+  margin: 0.6em 0 0.4em;
+}
+
+.article .meta{
+  font-size: 13px;
+  color: #666;
+}
+
+.article h2{
+  font-size: 30px;         /* ✅ 二级标题 */
+  margin-top: 1.2em;
+}
+
+.article h3{
+  font-size: 30px;
+  margin-top: 1.0em;
+}
+
+.article p,
+.article li{
+  font-size: 17.5px;       /* ✅ 正文舒服 */
+  line-height: 1.95;
+}
+
+
+/* =========================
+   表格：更像 Typora（铺满 + 对齐）
+   ========================= */
+.article table{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;         /* ✅ 表格文字别太大 */
+}
+
+/* 单元格基础样式 */
+.article th,
+.article td{
+  padding: 8px 10px;
+  vertical-align: middle;
+  white-space: nowrap;     /* ✅ 避免换行造成“错位感” */
+  font-variant-numeric: tabular-nums; /* ✅ 数字等宽，看起来会齐 */
+  font-feature-settings: "tnum" 1;
+}
+
+/* 默认：第一列（币种）左对齐，其余列右对齐（财务表更自然） */
+.article th:first-child,
+.article td:first-child{ text-align: left; }
+
+.article th:not(:first-child),
+.article td:not(:first-child){ text-align: right; }
+
+/* 表格过宽：允许横向滚动（不压缩变形） */
+.table-wrap{ overflow-x: auto; }
+.table-wrap table{ min-width: 900px; }
+
+
+/* =========================
+   图表：缩小占地 + 不闪烁
+   ========================= */
+/* 图表容器整体变小一点，并居中 */
+.chart-wrap{
+  max-width: 780px;     /* ✅ 你想更小就改成 700/650 */
+  margin: 16px auto;
+}
+
+/* 关键：只控宽度，不要用 CSS 强行改 canvas 高度（会导致 Chart.js 抖动/闪烁） */
+.chart-wrap canvas{
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+.chart-err{
+  margin-top: 8px;
+  color: #b00020;
+  font-size: 13px;
+  white-space: pre-wrap;
+}
+
+
+/* =========================
+   小屏幕适配
+   ========================= */
+@media (max-width: 900px){
+  .site-main{ gap: 16px; }
+
+  .sidebar{
+    width: 210px;
+    flex: 0 0 210px;
+    min-width: 210px;
+  }
+
+  .article h1{ font-size: 24px; }
+}

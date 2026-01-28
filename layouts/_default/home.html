@@ -1,0 +1,173 @@
+{{ define "main" }}
+{{ $pages := where .Site.RegularPages "Section" "daily" }}
+
+<style>
+  .layout { display:flex; gap:0; }
+  .sidebar { width:320px; border-right:1px solid #ddd; padding:10px; height: calc(100vh - 56px); overflow:auto; }
+  .content { flex:1; padding:12px 24px; height: calc(100vh - 56px); overflow:auto; }
+
+  .breadcrumbs{ color:#777; font-size:18px; margin: 4px 0 10px; }
+
+  .month-title{ text-align:center; font-size:30px; margin:18px 0 10px; font-weight:800; }
+
+  .tree details{ margin:6px 0; }
+  .tree summary{ cursor:pointer; user-select:none; font-weight:700; font-size:14px; }
+
+  .month-details { margin: 6px 0; }
+  .month-summary{
+    cursor:pointer;
+    user-select:none;
+    font-weight:700;
+    padding:6px 8px;
+    border-radius:8px;
+    font-size:17px;
+    list-style:none;
+  }
+  .month-summary:hover{ background:#f5f5f5; }
+
+  /* 高亮当前月份（我们给 details 加 active 类） */
+  .month-details.active > .month-summary{
+    background: rgba(3,102,214,.12);
+  }
+
+  .day-list{ list-style:none; padding-left:18px; margin:6px 0 10px; }
+  .day-list li{ white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding:3px 0; }
+  .day-list a{ text-decoration:none; font-size:13px; }
+  .day-list a:hover{ text-decoration:underline; }
+
+  .rows{ margin-top: 10px; }
+  .row{ padding:10px 0; border-bottom:1px solid #eee; font-size:16px; }
+  .row a{ font-weight:600; color:#0a66c2; text-decoration:none; font-size:17px; }
+  .row a:hover{ text-decoration:underline; }
+  .hint{ color:#777; font-size:13px; }
+
+  .month-panel{ display:none; }
+  .month-panel.active{ display:block; }
+</style>
+
+<div class="layout">
+  <!-- 左侧树 -->
+  <aside class="sidebar">
+    <div class="breadcrumbs">我的定投日志 » 守币日记</div>
+
+    <div class="tree">
+      {{/* 年份倒序 */}}
+      {{ range $yg := (sort ($pages.GroupByDate "2006") "Key" "desc") }}
+        <details class="year-details" data-year="{{ $yg.Key }}">
+          <summary>{{ $yg.Key }} 年</summary>
+
+          {{/* 月份倒序 */}}
+          {{ range $mg := (sort ($yg.Pages.GroupByDate "2006-01") "Key" "desc") }}
+            {{ $ym := $mg.Key }}
+            <details class="month-details" data-ym="{{ $ym }}">
+              <summary class="month-summary">
+                {{ (time (printf "%s-01" $ym)).Format "1" }}月
+                <span style="color:#999; font-weight:500;">（{{ len $mg.Pages }}）</span>
+              </summary>
+
+              <ul class="day-list">
+                {{ range $p := (sort $mg.Pages "Date" "desc") }}
+                  {{/* 左侧收益率：优先 totalYield，没有则从标题提取 “收益率：xx%” */}}
+                  {{ $yield := "" }}
+                  {{ with $p.Params.totalYield }}
+                    {{ $yield = . }}
+                  {{ else }}
+                    {{ $m := (findRE `收益率[:：]\s*[-+0-9.]+%` $p.Title) }}
+                    {{ if gt (len $m) 0 }}
+                      {{ $yield = (index $m 0) }}
+                    {{ end }}
+                  {{ end }}
+
+                  <li>
+                    <a href="{{ $p.RelPermalink }}">
+                      {{ $p.Date.Format "2006-01-02" }}
+                      {{ if $yield }}
+                        ，{{ $yield }}
+                      {{ end }}
+                    </a>
+                  </li>
+                {{ end }}
+              </ul>
+            </details>
+          {{ end }}
+        </details>
+      {{ end }}
+    </div>
+  </aside>
+
+  <!-- 右侧月面板 -->
+  <main class="content">
+    <div class="hint">点击左侧月份：展开当月每天记录，同时右侧显示该月全部记录；点击任意日期进入当天文章。</div>
+
+    {{ range $mgAll := ($pages.GroupByDate "2006-01") }}
+      {{ $ym := $mgAll.Key }}
+      {{ $monthNum := (time (printf "%s-01" $ym)).Format "1" }}
+      <section class="month-panel" data-panel="{{ $ym }}">
+        <div class="month-title">{{ $monthNum }}月</div>
+
+        <div class="rows">
+          {{ range $p := (sort $mgAll.Pages "Date" "desc") }}
+            {{ $d := $p.Date.Format "1月2日" }}
+            {{ $dayIndex := $p.Params.day_index }}
+            {{ $pnl := $p.Params.pnl }}
+            {{ $ret := $p.Params.return }}
+            <div class="row">
+              <a href="{{ $p.RelPermalink }}">
+                {{ $d }}{{ with $dayIndex }}第 {{ . }} 天：{{ end }}
+                {{ with $pnl }} 利润{{ . }}USDT，{{ end }}
+                {{ with $ret }} 利润率{{ . }}%{{ end }}
+              </a>
+            </div>
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+
+    <script>
+      (function(){
+        const panels = Array.from(document.querySelectorAll('.month-panel'));
+        const monthDetails = Array.from(document.querySelectorAll('.month-details'));
+        const yearDetails = Array.from(document.querySelectorAll('.year-details'));
+
+        function activate(ym){
+          // 右侧面板
+          panels.forEach(p => p.classList.toggle('active', p.dataset.panel === ym));
+
+          // 左侧高亮
+          monthDetails.forEach(d => d.classList.toggle('active', d.dataset.ym === ym));
+
+          // 左侧自动展开：月份 + 对应年份
+          const md = monthDetails.find(d => d.dataset.ym === ym);
+          if (md) {
+            md.open = true;
+            const year = ym.slice(0, 4);
+            const yd = yearDetails.find(d => d.dataset.year === year);
+            if (yd) yd.open = true;
+          }
+        }
+
+        // 点击月份 summary：既展开（浏览器原生），又联动右侧
+        document.querySelector('.tree')?.addEventListener('click', function(e){
+          const summary = e.target.closest('summary');
+          if (!summary) return;
+          const md = summary.closest('.month-details');
+          if (!md) return;
+          const ym = md.dataset.ym;
+          if (ym) activate(ym);
+        });
+
+        // 处理 /?ym=2026-01 从文章返回
+        const params = new URLSearchParams(location.search);
+        const ym = params.get("ym");
+        if (ym && /^\d{4}-\d{2}$/.test(ym)) {
+          activate(ym);
+        } else {
+          // 默认激活最新月份（按 DOM 第一条 month-details）
+          const first = monthDetails[0];
+          if (first?.dataset?.ym) activate(first.dataset.ym);
+        }
+      })();
+    </script>
+  </main>
+</div>
+{{ end }}

@@ -1,0 +1,72 @@
+{{- $id := printf "chart-%s-%d" .Page.File.Path .Ordinal | urlize -}}
+{{- $h := .Get "height" | default "420" -}}
+
+<div style="max-width: 980px; margin: 16px 0;">
+  <canvas id="{{ $id }}" style="width:100%; height:{{ $h }}px;"></canvas>
+  <div id="{{ $id }}-err" style="margin-top:8px; color:#b00020; font-size:14px; white-space:pre-wrap;"></div>
+</div>
+
+<script>
+(function () {
+  var canvasId = "{{ $id }}";
+  var errId = "{{ $id }}-err";
+
+  function showErr(msg) {
+    var el = document.getElementById(errId);
+    if (el) el.textContent = msg;
+  }
+
+  function parseCfg() {
+    var raw = `{{ .Inner | safeHTML }}`.trim();
+    if (!raw) return null;
+
+    // 优先严格 JSON
+    try { return JSON.parse(raw); } catch (e) {}
+
+    // 再尝试 JS 对象字面量（容错尾逗号等）
+    try { return (new Function("return (" + raw + ");"))(); } catch (e) {}
+
+    return null;
+  }
+
+  function render() {
+    var canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+
+    var cfg = parseCfg();
+    if (!cfg || typeof cfg !== "object") {
+      showErr("Chart 配置不是对象（请检查 chart shortcode 内 JSON/对象是否完整）");
+      console.error("Chart raw config:", `{{ .Inner | safeHTML }}`);
+      return;
+    }
+
+    window.__hugoCharts = window.__hugoCharts || {};
+    if (window.__hugoCharts[canvasId]) {
+      try { window.__hugoCharts[canvasId].destroy(); } catch(e) {}
+    }
+    window.__hugoCharts[canvasId] = new Chart(canvas.getContext("2d"), cfg);
+  }
+
+  // ✅ 等 Chart.js 真正可用再渲染（重试最多 3 秒）
+  function waitForChartAndRender() {
+    var start = Date.now();
+    (function tick() {
+      if (window.Chart) {
+        render();
+        return;
+      }
+      if (Date.now() - start > 3000) {
+        showErr("Chart.js 加载超时（请检查 js/chart.umd.min.js 是否存在且可访问）");
+        return;
+      }
+      setTimeout(tick, 50);
+    })();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", waitForChartAndRender);
+  } else {
+    waitForChartAndRender();
+  }
+})();
+</script>
