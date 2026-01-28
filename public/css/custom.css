@@ -201,10 +201,12 @@ a:hover{ text-decoration:underline; }
 }
 
 
+
+/* header 右侧社交图标 */
 .site-header{
   display:flex;
   align-items:center;
-  justify-content: space-between;
+  justify-content: space-between; /* 左品牌 + 右图标 */
 }
 
 .site-social{
@@ -231,4 +233,3 @@ a:hover{ text-decoration:underline; }
   height:20px;
   display:block;
 }
-
