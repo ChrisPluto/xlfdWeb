@@ -164,7 +164,8 @@
   <!-- 右侧文章 -->
   <main class="content">
     {{/* ✅ 关键：返回本月必须用 relURL，不能用 Site.BaseURL */}}
-<a class="back-link" href='{{ (printf "/mydca/?ym=%s" (.Date.Format "2006-01")) | relURL }}'>← 返回本月</a>
+<a class="back-link" href='{{ (printf "/?ym=%s" (.Date.Format "2006-01")) | relURL }}'>← 返回本月</a>
+
 
 
     <article class="article">
