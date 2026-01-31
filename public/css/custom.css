@@ -184,8 +184,8 @@ a:hover{ text-decoration:underline; }
   white-space: pre-wrap;
 }
 
-
 /* =========================
+
    小屏幕适配
    ========================= */
 @media (max-width: 900px){
@@ -200,36 +200,41 @@ a:hover{ text-decoration:underline; }
   .article h1{ font-size: 24px; }
 }
 
+/* =========================
+   Header 右侧社交图标（必须加）
+   ========================= */
 
-
-/* header 右侧社交图标 */
+/* 让 header 内部左右分布：左 brand + 右 social */
 .site-header{
-  display:flex;
-  align-items:center;
-  justify-content: space-between; /* 左品牌 + 右图标 */
+  display: flex;
+  align-items: center;
 }
 
+/* brand 不要占满整行（避免把右侧挤走） */
+.site-brand{
+  flex: 0 0 auto;
+}
+
+/* 关键：把社交区推到最右 */
 .site-social{
-  display:flex;
-  align-items:center;
-  gap:12px;
+  margin-left: auto;           /* 核心 */
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.social-link{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:34px;
-  height:34px;
-  border-radius:8px;
+/* 图标点击区域 */
+.site-social .social-link{
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
 }
 
-.social-link:hover{
-  background: rgba(0,0,0,0.06);
+/* 图标尺寸 */
+.site-social .social-icon{
+  width: 34px;
+  height: 34px;
+  display: block;
 }
 
-.social-icon{
-  width:20px;
-  height:20px;
-  display:block;
-}
+
