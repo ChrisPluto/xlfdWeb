@@ -216,27 +216,4 @@ a:hover{ text-decoration:underline; }
 }
 
 
-/* 修复：details 折叠后 summary 点不了（一般是被右侧内容盖住） */
-.site-main { position: relative; }
-
-.sidebar{
-  position: relative;
-  z-index: 10;     /* 侧栏压过右侧内容 */
-}
-
-.content{
-  position: relative;
-  z-index: 1;
-}
-
-/* 确保 summary 一直可点击 */
-.sidebar details > summary{
-  cursor: pointer;
-  pointer-events: auto;
-  user-select: none;
-}
-
-.content { pointer-events: none !important; }
-
-
 
