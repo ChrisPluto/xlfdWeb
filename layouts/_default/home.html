@@ -59,7 +59,8 @@
           {{/* 月份倒序 */}}
           {{ range $mg := (sort ($yg.Pages.GroupByDate "2006-01") "Key" "desc") }}
             {{ $ym := $mg.Key }}
-            <details class="month-details" data-ym="{{ $ym }}">
+            <details class="month-details" data-ym="{{ $ym }}" open>
+
               <summary class="month-summary">
                 {{ (time (printf "%s-01" $ym)).Format "1" }}月
                 <span style="color:#999; font-weight:500;">（{{ len $mg.Pages }}）</span>
