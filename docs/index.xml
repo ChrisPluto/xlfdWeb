@@ -198,18 +198,18 @@
       <description>&lt;h1 id=&#34;我的投资想法&#34;&gt;我的投资想法&lt;/h1&gt;&#xA;&lt;p&gt;这里将记录我的投资想法和思考&amp;hellip;&lt;/p&gt;&#xA;&lt;h2 id=&#34;关于定投&#34;&gt;关于定投&lt;/h2&gt;&#xA;&lt;p&gt;定投是最适合普通人的投资方式&amp;hellip;&lt;/p&gt;&#xA;&lt;h2 id=&#34;关于风险管理&#34;&gt;关于风险管理&lt;/h2&gt;&#xA;&lt;p&gt;永远不要投入超过你承受能力的资金&amp;hellip;&lt;/p&gt;</description>
     </item>
     <item>
-      <title>投资心得第一篇</title>
-      <link>https://chrispluto.github.io/xlfdWeb/insights/sample/</link>
-      <pubDate>Thu, 15 Jan 2026 00:00:00 +0900</pubDate>
-      <guid>https://chrispluto.github.io/xlfdWeb/insights/sample/</guid>
-      <description>&lt;h1 id=&#34;我的投资思考&#34;&gt;我的投资思考&lt;/h1&gt;&#xA;&lt;p&gt;这里将记录我的投资心得和思考&amp;hellip;&lt;/p&gt;&#xA;&lt;h2 id=&#34;为什么选择定投&#34;&gt;为什么选择定投？&lt;/h2&gt;&#xA;&lt;p&gt;定投是最适合普通人的投资方式&amp;hellip;&lt;/p&gt;&#xA;&lt;h2 id=&#34;风险管理&#34;&gt;风险管理&lt;/h2&gt;&#xA;&lt;p&gt;永远不要投入超过你承受能力的资金&amp;hellip;&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>技术学习笔记</title>
       <link>https://chrispluto.github.io/xlfdWeb/tech/sample/</link>
       <pubDate>Sat, 10 Jan 2026 00:00:00 +0900</pubDate>
       <guid>https://chrispluto.github.io/xlfdWeb/tech/sample/</guid>
       <description>&lt;h1 id=&#34;技术学习笔记&#34;&gt;技术学习笔记&lt;/h1&gt;&#xA;&lt;p&gt;这里将记录我的技术学习内容&amp;hellip;&lt;/p&gt;&#xA;&lt;h2 id=&#34;学习方向&#34;&gt;学习方向&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;前端开发&lt;/li&gt;&#xA;&lt;li&gt;区块链技术&lt;/li&gt;&#xA;&lt;li&gt;数据分析&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>我的定投策略</title>
+      <link>https://chrispluto.github.io/xlfdWeb/insights/%E6%8A%95%E8%B5%84%E7%AD%96%E7%95%A5/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://chrispluto.github.io/xlfdWeb/insights/%E6%8A%95%E8%B5%84%E7%AD%96%E7%95%A5/</guid>
+      <description>&lt;p style=&#34;font-size:20px;&#34;&gt; 我的定投策略制定于 **2025-11-05**&#xD;&#xA;&lt;p&gt;&lt;code&gt;定投 = 固定时间 + 固定金额 + 长期执行。不猜高点、不抄底、不预测行情。&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p style=&#34;font-size:20px;&#34;&gt;我于2021年 BTC 69000U 牛市最高点跟随Anbang对市值前100的币进行定投，定投持续了三年，于2024年取得了相当可观的盈利。所以今年我开始了新一轮的只买不卖三十年定投计划。`&#xD;&#xA;&lt;p style=&#34;font-size:20px;&#34;&gt; 我将以月为单位，每月定投 1800 USDT ( 根据行情不同会有调整，若偶遇黑天鹅事件也许会大额抄底 ) 。具体币种目前暂定为市值前50。这个策略覆盖的币种比较广，风险也极大，所以我会将每次定投的大头都用来买BTC、ETH、SOL、BNB等主流币，如果出现了好的投资标的时，我会进行小额押注。主打一个长期持有，主打一个稳健。&#xD;&#xA;&lt;h1 id=&#34;底层逻辑&#34;&gt;底层逻辑&lt;/h1&gt;&#xA;&lt;p style=&#34;font-size:20px;&#34;&gt;我进行只买不卖守币三十年的底层逻辑：币圈如今的市值相比较主流金融产品仍然是非常小。最近贵金属连番上涨，白银短短一个月内市值的涨幅都远超比特币总市值，非常夸张。由此可见，币圈在传统金融面前仍然属于早期，长期浸淫在币圈的人可能很难感知到这一点，所以，雷打不动定投可以说是保守派最为稳妥的投资策略。&#xD;&#xA;&lt;p style=&#34;font-size:20px;&#34;&gt;熊市总是比牛市长，并且长很多很多……我将通过定投不断的在漫长的熊市中积聚能量。&#xD;&#xA;&lt;h1 id=&#34;参考指标&#34;&gt;参考指标&lt;/h1&gt;&#xA;&lt;p style=&#34;font-size:20px;&#34;&gt;Fear and Greed Index       &amp;&amp;    AHR999 九神指数</description>
     </item>
   </channel>
 </rss>
