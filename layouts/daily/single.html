@@ -7,7 +7,7 @@
 {{ $yield := .Params.yield }}
 {{ $yieldStr := "" }}
 {{ if $yield }}
-  {{ $yieldStr = printf "，收益率：%s%%" ($yield | string) }}
+  {{ $yieldStr = printf "，收益率：%s" ($yield | string) }}
 {{ end }}
 {{ $newTitle := printf "%s，定投第%d天%s" ($postDate.Format "2006-01-02") $days $yieldStr }}
 
