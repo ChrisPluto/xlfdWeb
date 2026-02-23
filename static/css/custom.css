@@ -1,219 +1,525 @@
 /* =========================
-   基础（不要用 :root 80% 缩放）
+   GitBook 风格主题
    ========================= */
-html { font-size: 16px; }   /* 保持浏览器默认基准 */
 
-body{
-  margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
-               "Noto Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-  font-size: 14px;          /* ✅ 全站基础字号：比默认小一号 */
-  line-height: 1.75;
-  color: #111;
+:root {
+  --primary: #1a1dc3;
+  --primary-hover: #1416a8;
+  --text-primary: #1a1a1a;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --border-color: #e5e7eb;
+  --bg-main: #ffffff;
+  --bg-secondary: #f9fafb;
+  --hover-bg: #f3f4f6;
+  --radius: 8px;
 }
 
-a{ color:#0366d6; text-decoration:none; }
-a:hover{ text-decoration:underline; }
+html { font-size: 16px; }
 
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg-main);
+}
+
+a { color: var(--primary); text-decoration: none; }
+a:hover { text-decoration: underline; }
 
 /* =========================
-   Header
+   顶部导航栏
    ========================= */
-.site-header{
-  padding: 14px 20px;
-  border-bottom: 1px solid #ddd;
+#site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 64px;
+  background: #fff;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 24px;
+  gap: 24px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.site-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.site-emoji {
+  font-size: 22px;
+}
+
+.site-title {
+  font-size: 17px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.header-center {
+  flex: 1;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 80px 10px 40px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: var(--bg-secondary);
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.search-input:focus {
+  border-color: var(--primary);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(26, 29, 195, 0.1);
+}
+
+.search-shortcut {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  padding: 3px 6px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--text-muted);
+}
+
+.header-right {
   display: flex;
   align-items: center;
 }
 
-.site-brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  text-decoration:none;
-  color:#111;
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
-.site-avatar{
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1px solid #ddd;
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
 }
 
-.site-title{
-  font-size: 20px;
-  font-weight: 800;
+.nav-link:hover {
+  background: var(--hover-bg);
+  color: var(--primary);
+  text-decoration: none;
 }
-
 
 /* =========================
-   主体布局：侧栏 + 正文
+   主内容区
    ========================= */
-.site-main{
-  padding: 20px;
+.main-wrapper {
+  min-height: calc(100vh - 64px);
+  background: var(--bg-main);
+}
+
+@media (max-width: 900px) {
+  .header-center { display: none; }
+  .header-nav { gap: 2px; }
+  .nav-link { padding: 8px 10px; }
+  .nav-link span { display: none; }
+}
+
+/* =========================
+   顶部导航栏
+   ========================= */
+#site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 64px;
+  background: #fff;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.header-content {
   display: flex;
-  align-items: stretch;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 24px;
   gap: 24px;
 }
 
-/* =========================
-   左侧栏：固定宽度（主页/文章页一致）
-   ========================= */
-.sidebar{
-  width: 240px;
-  flex: 0 0 240px;
-  min-width: 240px;
-  padding: 10px;
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
 }
 
-/* 顶部面包屑：不换行，太长省略号（避免“守币日记”断行） */
-.breadcrumbs{
-  font-size: 14px;
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--text-secondary);
+}
+
+.site-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.site-emoji {
+  font-size: 22px;
+}
+
+.site-title {
+  font-size: 17px;
+  font-weight: 600;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.header-center {
+  flex: 1;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+.search-box {
+  position: relative;
+  width: 100%;
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 80px 10px 40px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: var(--bg-secondary);
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.search-input:focus {
+  border-color: var(--primary);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(26, 29, 195, 0.1);
+}
+
+.search-shortcut {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  padding: 3px 6px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--text-muted);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.nav-link:hover {
+  background: var(--hover-bg);
+  color: var(--primary);
+  text-decoration: none;
+}
+
+/* =========================
+   主内容区 + 侧边栏布局
+   ========================= */
+.main-wrapper {
+  min-height: calc(100vh - 64px);
+  background: var(--bg-main);
+}
+
+.with-sidebar {
+  display: flex;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+.sidebar-nav {
+  width: 240px;
+  flex: 0 0 240px;
+  min-width: 240px;
+  position: sticky;
+  top: 96px;
+  height: fit-content;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.sidebar-section {
+  margin-bottom: 20px;
+}
+
+.sidebar-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #9ca3af;
+  padding: 8px 12px;
+  margin-bottom: 4px;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #4b5563;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+
+.sidebar-item:hover {
+  background: var(--hover-bg);
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.sidebar-item.active {
+  background: rgba(26, 29, 195, 0.08);
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.sidebar-emoji {
+  font-size: 14px;
+}
+
+.main-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* =========================
+   文章页
+   ========================= */
+.article {
   max-width: 100%;
 }
 
-/* 左侧树/列表：更小、更紧凑 */
-.tree summary { font-size: 14px; }
-.month-summary { font-size: 13.5px; }
-.day-list a { font-size: 13px; }
-.day-list li { padding: 2px 0; }
+.article h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 20px;
+  line-height: 1.3;
+}
+
+.article h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 1.4em 0 0.6em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.article h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 1.2em 0 0.5em;
+}
+
+.article p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 1em 0;
+}
+
+.article li {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0.5em 0;
+}
+
+.article .meta {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
 
 /* =========================
-   右侧内容区：铺满剩余空间
+   表格
    ========================= */
-.content{
-  flex: 1 1 auto;
-  min-width: 0;            /* ✅ 关键：让内容区能正确计算宽度 */
-  padding: 8px 0;
-}
-
-/* 如果主题给文章内容强行 max-width 导致“挤在左边”，解除它 */
-.content, .article{ max-width: none; }
-
-/* 返回本月 */
-.back-link{ font-size: 13px; }
-
-
-/* =========================
-   文章字号体系（重点）
-   ========================= */
-.article h1{
-  font-size: 28px;         /* ✅ 文章主标题更大 */
-  line-height: 1.25;
-  margin: 0.6em 0 0.4em;
-}
-
-.article .meta{
-  font-size: 13px;
-  color: #666;
-}
-
-.article h2{
-  font-size: 30px;         /* ✅ 二级标题 */
-  margin-top: 1.2em;
-}
-
-.article h3{
-  font-size: 30px;
-  margin-top: 1.0em;
-}
-
-.article p,
-.article li{
-  font-size: 17.5px;       /* ✅ 正文舒服 */
-  line-height: 1.95;
-}
-
-
-/* =========================
-   表格：更像 Typora（铺满 + 对齐）
-   ========================= */
-.article table{
+.article table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 13px;         /* ✅ 表格文字别太大 */
+  font-size: 14px;
+  margin: 16px 0;
 }
 
-/* 单元格基础样式 */
 .article th,
-.article td{
-  padding: 8px 10px;
-  vertical-align: middle;
-  white-space: nowrap;     /* ✅ 避免换行造成“错位感” */
-  font-variant-numeric: tabular-nums; /* ✅ 数字等宽，看起来会齐 */
-  font-feature-settings: "tnum" 1;
+.article td {
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  text-align: left;
 }
 
-/* 默认：第一列（币种）左对齐，其余列右对齐（财务表更自然） */
-.article th:first-child,
-.article td:first-child{ text-align: left; }
+.article th {
+  background: var(--bg-secondary);
+  font-weight: 600;
+}
+
+.article td {
+  background: #fff;
+}
 
 .article th:not(:first-child),
-.article td:not(:first-child){ text-align: right; }
-
-/* 表格过宽：允许横向滚动（不压缩变形） */
-.table-wrap{ overflow-x: auto; }
-.table-wrap table{ min-width: 900px; }
-
-
-/* =========================
-   图表：缩小占地 + 不闪烁
-   ========================= */
-/* 图表容器整体变小一点，并居中 */
-.chart-wrap{
-  max-width: 780px;     /* ✅ 你想更小就改成 700/650 */
-  margin: 16px auto;
+.article td:not(:first-child) {
+  text-align: right;
 }
 
-/* 关键：只控宽度，不要用 CSS 强行改 canvas 高度（会导致 Chart.js 抖动/闪烁） */
-.chart-wrap canvas{
+/* =========================
+   图表
+   ========================= */
+.chart-wrap {
+  max-width: 800px;
+  margin: 24px auto;
+}
+
+.chart-wrap canvas {
   width: 100% !important;
   height: auto !important;
-  display: block;
 }
-
-.chart-err{
-  margin-top: 8px;
-  color: #b00020;
-  font-size: 13px;
-  white-space: pre-wrap;
-}
-
 
 /* =========================
-   小屏幕适配
+   响应式
    ========================= */
-@media (max-width: 900px){
-  .site-main{ gap: 16px; }
-
-  .sidebar{
-    width: 210px;
-    flex: 0 0 210px;
-    min-width: 210px;
+@media (max-width: 900px) {
+  .header-center { display: none; }
+  
+  .header-nav { gap: 2px; }
+  .nav-link { padding: 8px 10px; }
+  .nav-link span { display: none; }
+  
+  .with-sidebar {
+    flex-direction: column;
+    padding: 20px 16px;
   }
-
-  .article h1{ font-size: 24px; }
+  
+  .sidebar-nav {
+    width: 100%;
+    flex: none;
+    position: static;
+    max-height: none;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+  }
+  
+  .sidebar-section {
+    margin-bottom: 0;
+    white-space: nowrap;
+  }
 }
-
-/* 顶部右侧社交图标整体微调 */
-.site-social {
-  display: flex;
-  align-items: center;   /* 垂直居中 */
-  gap: 12px;             /* 两个图标之间的间距 */
-  margin-left: 16px;     /* 整体往右挪一点点（你可以调） */
-}
-
-/* 统一图标尺寸，避免视觉不齐 */
-.site-social .social-icon {
-  width: 28px;
-  height: 28px;
-  display: block;
-}
-
-
-

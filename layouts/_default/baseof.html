@@ -8,31 +8,126 @@
 
   <link rel="stylesheet" href='{{ "css/custom.css" | relURL }}'>
 
-  <!-- ✅ Chart.js：defer 确保在 DOM 解析完成后执行，避免偶发先后顺序问题 -->
+  <!-- Chart.js -->
   <script defer src='{{ "js/chart.umd.min.js" | relURL }}'></script>
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
 </head>
 
 <body>
-<header class="site-header">
-  <a class="site-brand" href='{{ .Site.BaseURL }}'>
-    <img class="site-avatar" src='{{ "images/avatar.png" | relURL }}' alt="avatar"/>
-    <span class="site-title">小李飞刀的定投记录</span>
-  </a>
+<!-- 顶部导航 -->
+<header id="site-header">
+  <div class="header-inner">
+    <div class="header-content">
+      <div class="header-left">
+        <a class="site-brand" href='{{ .Site.BaseURL }}'>
+          <span class="site-emoji">📘</span>
+          <span class="site-title">{{ .Site.Title }}</span>
+        </a>
+      </div>
 
-  <!-- 右侧社交图标 -->
-  <nav class="site-social" aria-label="social links">
-    <a class="social-link" href="https://x.com/xlfdBTC" target="_blank" rel="noopener" title="X / Twitter">
-      <img src='{{ "images/x.png" | relURL }}' alt="X" class="social-icon">
-    </a>
-    <a class="social-link" href="https://www.youtube.com/@Dr_%E5%B0%8F%E6%9D%8E%E9%A3%9E%E5%88%80" target="_blank" rel="noopener" title="YouTube">
-      <img src='{{ "images/youtube.png" | relURL }}' alt="YouTube" class="social-icon">
-    </a>
-  </nav>
+      <div class="header-center">
+        <div class="search-box" style="position:relative;">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" placeholder="搜索…" class="search-input" id="search-input">
+          <kbd class="search-shortcut">⌘K</kbd>
+          <div id="search-results" class="search-results"></div>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <nav class="header-nav">
+          <a href="/mydca/daily/" class="nav-link">
+            <i class="fas fa-calendar-day"></i> <span>只买不卖定投三十年</span>
+          </a>
+          <a href="/mydca/insights/" class="nav-link">
+            <i class="fas fa-lightbulb"></i> <span>整理与思考</span>
+          </a>
+          <a href="/mydca/tech/" class="nav-link">
+            <i class="fas fa-code"></i> <span>技术洞见</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </div>
 </header>
 
-<main class="site-main">
+<!-- 主内容 -->
+<div class="main-wrapper">
   {{ block "main" . }}{{ end }}
-</main>
+</div>
+
+<style>
+.search-results {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+.search-results.active { display: block; }
+.search-result-item {
+  display: block;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: #4b5563;
+  border-bottom: 1px solid #f3f4f6;
+}
+.search-result-item:hover { background: #f3f4f6; color: #1a1dc3; }
+.search-result-item:last-child { border-bottom: none; }
+.search-result-title { font-weight: 500; }
+.search-result-section { font-size: 12px; color: #9ca3af; }
+</style>
+
+<script>
+const searchInput = document.getElementById('search-input');
+const searchResults = document.getElementById('search-results');
+
+const pages = [
+{{ range where .Site.RegularPages "Section" "!=" "" }}
+  { title: "{{ .Title }}", url: "{{ .RelPermalink }}", section: "{{ .Section }}" },
+{{ end }}
+];
+
+searchInput.addEventListener('input', function() {
+  const query = this.value.toLowerCase();
+  if (query.length < 1) {
+    searchResults.classList.remove('active');
+    return;
+  }
+  
+  const results = pages.filter(p => 
+    p.title.toLowerCase().includes(query) || p.section.includes(query)
+  ).slice(0, 10);
+  
+  if (results.length > 0) {
+    searchResults.innerHTML = results.map(r => 
+      '<a href="' + r.url + '" class="search-result-item">' +
+        '<div class="search-result-title">' + r.title + '</div>' +
+        '<div class="search-result-section">' + r.section + '</div>' +
+      '</a>'
+    ).join('');
+    searchResults.classList.add('active');
+  } else {
+    searchResults.innerHTML = '<div class="search-result-item">未找到结果</div>';
+    searchResults.classList.add('active');
+  }
+});
+
+document.addEventListener('click', function(e) {
+  if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+    searchResults.classList.remove('active');
+  }
+});
+</script>
 
 </body>
 </html>

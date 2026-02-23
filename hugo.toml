@@ -1,7 +1,11 @@
 baseURL = "https://ChrisPluto.github.io/mydca/"
 languageCode = "zh-cn"
-title = "我的定投日志"
+title = "小李飞刀的投资记录"
 disableKinds = ["taxonomy", "term"]
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
 
 [markup]
   [markup.goldmark]

@@ -18,12 +18,8 @@
 .sidebar-parent.open > .sidebar-chevron { transform: rotate(90deg); }
 .sidebar-children { display: none; padding-left: 20px; margin-top: 4px; }
 .sidebar-parent.open + .sidebar-children { display: block; }
-.sidebar-year { display: flex; align-items: center; padding: 8px 10px; border-radius: 6px; font-size: 14px; color: #4b5563; cursor: pointer; }
-.sidebar-year.open > .sidebar-chevron { transform: rotate(90deg); }
-.sidebar-months { display: none; padding-left: 16px; }
-.sidebar-year.open + .sidebar-months { display: block; }
-.sidebar-month { padding: 6px 10px; font-size: 13px; color: #6b7280; border-radius: 4px; cursor: pointer; text-decoration: none; display: block; }
-.sidebar-month:hover, .sidebar-month.active { background: #f3f4f6; color: #1a1dc3; }
+.sidebar-article { display: block; padding: 8px 10px; font-size: 13px; color: #6b7280; border-radius: 4px; text-decoration: none; }
+.sidebar-article:hover, .sidebar-article.active { background: #f3f4f6; color: #1a1dc3; }
 .sidebar-link { display: block; padding: 8px 10px; font-size: 13px; color: #6b7280; border-radius: 4px; text-decoration: none; }
 .sidebar-link:hover { background: #f3f4f6; color: #1a1dc3; }
 .main-content { flex: 1; min-width: 0; padding: 32px 40px; overflow-y: auto; max-height: calc(100vh - 64px); }
@@ -42,31 +38,10 @@
     <div class="sidebar-group">
       <div class="sidebar-group-header">📊 投资记录</div>
       <div class="sidebar-links">
-        <div class="sidebar-parent open" onclick="this.classList.toggle('open')">
+        <a href="/mydca/" class="sidebar-parent">
           <span>📈</span>
           <span style="margin-left:8px">只买不卖定投三十年</span>
-          <i class="fas fa-chevron-right sidebar-chevron"></i>
-        </div>
-        <div class="sidebar-children">
-          {{ range $yg := (sort ($dailyPages.GroupByDate "2006") "Key" "desc") }}
-            <div class="sidebar-year open" onclick="event.stopPropagation(); this.classList.toggle('open')">
-              {{ $yg.Key }} 年
-              <i class="fas fa-chevron-right sidebar-chevron" style="font-size:10px;margin-left:auto;"></i>
-            </div>
-            <div class="sidebar-months">
-              {{ range $mg := (sort ($yg.Pages.GroupByDate "2006-01") "Key" "desc") }}
-                {{ $ym := $mg.Key }}
-                {{ $mn := (time (printf "%s-01" $ym)).Format "1" }}
-                <div class="sidebar-month">{{ $mn }}月</div>
-                <div style="padding-left:12px;">
-                  {{ range $mg.Pages }}
-                    <a href="{{ .RelPermalink }}" class="sidebar-link{{ if eq $.Permalink .Permalink }} active{{ end }}" style="background:#f3f4f6;">{{ .Date.Format "1/2" }}</a>
-                  {{ end }}
-                </div>
-              {{ end }}
-            </div>
-          {{ end }}
-        </div>
+        </a>
       </div>
     </div>
     
@@ -74,10 +49,20 @@
     <div class="sidebar-group">
       <div class="sidebar-group-header">💡 投资学习</div>
       <div class="sidebar-links">
-        <a href="/mydca/insights/" class="sidebar-parent">
+        <div class="sidebar-parent open" onclick="this.classList.toggle('open')">
           <span>📚</span>
           <span style="margin-left:8px">整理与思考</span>
-        </a>
+          <i class="fas fa-chevron-right sidebar-chevron"></i>
+        </div>
+        <div class="sidebar-children">
+          {{ if gt (len $insightsPages) 0 }}
+            {{ range sort $insightsPages "Date" "desc" }}
+              <a href="{{ .RelPermalink }}" class="sidebar-article{{ if eq $.Permalink .Permalink }} active{{ end }}">{{ .Title }}</a>
+            {{ end }}
+          {{ else }}
+            <div style="padding:8px 10px;font-size:13px;color:#9ca3af;">暂无文章</div>
+          {{ end }}
+        </div>
       </div>
     </div>
     

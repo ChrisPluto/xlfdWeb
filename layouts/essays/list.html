@@ -22,17 +22,16 @@
 .sidebar-year.open > .sidebar-chevron { transform: rotate(90deg); }
 .sidebar-months { display: none; padding-left: 16px; }
 .sidebar-year.open + .sidebar-months { display: block; }
-.sidebar-month { padding: 6px 10px; font-size: 13px; color: #6b7280; border-radius: 4px; cursor: pointer; text-decoration: none; display: block; }
+.sidebar-month { padding: 6px 10px; font-size: 13px; color: #6b7280; border-radius: 4px; cursor: pointer; display: block; text-decoration: none; }
 .sidebar-month:hover, .sidebar-month.active { background: #f3f4f6; color: #1a1dc3; }
-.sidebar-link { display: block; padding: 8px 10px; font-size: 13px; color: #6b7280; border-radius: 4px; text-decoration: none; }
-.sidebar-link:hover { background: #f3f4f6; color: #1a1dc3; }
+.sidebar-article { display: block; padding: 8px 10px; font-size: 13px; color: #6b7280; border-radius: 4px; text-decoration: none; cursor: pointer; }
+.sidebar-article:hover, .sidebar-article.active { background: #f3f4f6; color: #1a1dc3; }
 .main-content { flex: 1; min-width: 0; padding: 32px 40px; overflow-y: auto; max-height: calc(100vh - 64px); }
 .article-header { margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #e5e7eb; }
 .article-title { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
 .article-meta { font-size: 13px; color: #9ca3af; }
 .article-content { font-size: 15px; line-height: 1.8; }
-.article-content h2 { margin-top: 24px; margin-bottom: 12px; font-size: 20px; }
-.article-content p { margin-bottom: 16px; }
+.loading { text-align: center; padding: 40px; color: #9ca3af; }
 @media (max-width: 900px) { .with-sidebar { flex-direction: column; } .sidebar-nav { width: 100%; border-right: none; border-bottom: 1px solid #e5e7eb; } }
 </style>
 
@@ -49,7 +48,7 @@
         </div>
         <div class="sidebar-children">
           {{ range $yg := (sort ($dailyPages.GroupByDate "2006") "Key" "desc") }}
-            <div class="sidebar-year open" onclick="event.stopPropagation(); this.classList.toggle('open')">
+            <div class="sidebar-year" onclick="event.stopPropagation(); this.classList.toggle('open')">
               {{ $yg.Key }} 年
               <i class="fas fa-chevron-right sidebar-chevron" style="font-size:10px;margin-left:auto;"></i>
             </div>
@@ -57,12 +56,7 @@
               {{ range $mg := (sort ($yg.Pages.GroupByDate "2006-01") "Key" "desc") }}
                 {{ $ym := $mg.Key }}
                 {{ $mn := (time (printf "%s-01" $ym)).Format "1" }}
-                <div class="sidebar-month">{{ $mn }}月</div>
-                <div style="padding-left:12px;">
-                  {{ range $mg.Pages }}
-                    <a href="{{ .RelPermalink }}" class="sidebar-link{{ if eq $.Permalink .Permalink }} active{{ end }}" style="background:#f3f4f6;">{{ .Date.Format "1/2" }}</a>
-                  {{ end }}
-                </div>
+                <a href="/mydca/?month={{ $ym }}" class="sidebar-month">{{ $mn }}月</a>
               {{ end }}
             </div>
           {{ end }}
@@ -115,16 +109,42 @@
     </div>
   </aside>
   
-  <main class="main-content">
-    <div class="article-header">
-      <h1 class="article-title">{{ .Title }}</h1>
-      <div class="article-meta">{{ .Date.Format "2006-01-02" }}</div>
-    </div>
-    
-    <div class="article-content">
-      {{ .Content }}
-    </div>
+  <main class="main-content" id="main-content">
+    <div class="loading">点击左侧文章查看内容</div>
   </main>
 </div>
+
+<script>
+document.querySelectorAll('.sidebar-article').forEach(el => {
+  el.addEventListener('click', function() {
+    const url = this.getAttribute('data-url');
+    if (!url) return;
+    
+    const contentArea = document.getElementById('main-content');
+    
+    document.querySelectorAll('.sidebar-article').forEach(a => a.classList.remove('active'));
+    this.classList.add('active');
+    
+    contentArea.innerHTML = '<div class="loading">加载中...</div>';
+    
+    fetch(url)
+      .then(res => res.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const articleContent = doc.querySelector('.main-content');
+        
+        if (articleContent) {
+          contentArea.innerHTML = articleContent.innerHTML;
+        } else {
+          contentArea.innerHTML = '<div class="loading">加载失败</div>';
+        }
+      })
+      .catch(err => {
+        contentArea.innerHTML = '<div class="loading">加载失败</div>';
+      });
+  });
+});
+</script>
 
 {{ end }}

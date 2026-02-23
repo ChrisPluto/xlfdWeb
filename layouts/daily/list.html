@@ -300,17 +300,6 @@ fetch('https://api.alternative.me/fng/')
   .catch(err => {
     document.getElementById('fng-value').textContent = '--';
   });
-
-// 处理URL参数，自动筛选月份
-const urlParams = new URLSearchParams(window.location.search);
-const monthParam = urlParams.get('month');
-if (monthParam) {
-  document.querySelectorAll('.sidebar-month').forEach(el => {
-    if (el.getAttribute('data-month') === monthParam) {
-      el.click();
-    }
-  });
-}
 </script>
 
 {{ end }}
