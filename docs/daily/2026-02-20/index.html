@@ -268,7 +268,6 @@
   function getRawCfgText() {
     var el = document.getElementById(cfgId);
     if (!el) return "";
-    
     return (el.textContent || "").trim();
   }
 
@@ -276,14 +275,10 @@
     var raw = getRawCfgText();
     if (!raw) return null;
 
-    
     raw = raw.replace(/^\s*```[a-zA-Z]*\s*/,'').replace(/```\s*$/,'').trim();
     if (!raw) return null;
 
-    
     try { return JSON.parse(raw); } catch (e) {}
-
-    
     try { return (new Function("return (" + raw + ");"))(); } catch (e) {}
 
     return null;
@@ -297,7 +292,7 @@
 
       if (!canvas) {
         if (Date.now() - start > 3000) {
-          showErr("未找到 canvas（页面未正确渲染 chart shortcode）");
+          showErr("未找到 canvas");
           return;
         }
         setTimeout(tick, 50);
@@ -306,7 +301,7 @@
 
       if (!window.Chart) {
         if (Date.now() - start > 5000) {
-          showErr("Chart.js 加载超时（请检查 js/chart.umd.min.js 是否存在且可访问）");
+          showErr("Chart.js 加载超时");
           return;
         }
         setTimeout(tick, 50);
@@ -316,9 +311,18 @@
       requestAnimationFrame(function () {
         var cfg = parseCfg();
         if (!cfg || typeof cfg !== "object") {
-          showErr("Chart 配置不是对象（请检查 chart shortcode 内 JSON 是否完整）");
-          console.error("Chart raw config text:", getRawCfgText());
+          showErr("Chart 配置解析失败");
           return;
+        }
+
+        
+        if (cfg.type === "bar") {
+          cfg.options = cfg.options || {};
+          cfg.options.scales = cfg.options.scales || {};
+          cfg.options.scales.x = cfg.options.scales.x || {};
+          cfg.options.scales.y = cfg.options.scales.y || {};
+          cfg.options.scales.x.barPercentage = 0.6;
+          cfg.options.scales.x.categoryPercentage = 0.8;
         }
 
         window.__hugoCharts = window.__hugoCharts || {};
@@ -330,7 +334,6 @@
           window.__hugoCharts[canvasId] = new Chart(canvas.getContext("2d"), cfg);
         } catch (e) {
           showErr("Chart 初始化失败：" + e);
-          console.error(e);
         }
       });
 
@@ -371,7 +374,6 @@
   function getRawCfgText() {
     var el = document.getElementById(cfgId);
     if (!el) return "";
-    
     return (el.textContent || "").trim();
   }
 
@@ -379,14 +381,10 @@
     var raw = getRawCfgText();
     if (!raw) return null;
 
-    
     raw = raw.replace(/^\s*```[a-zA-Z]*\s*/,'').replace(/```\s*$/,'').trim();
     if (!raw) return null;
 
-    
     try { return JSON.parse(raw); } catch (e) {}
-
-    
     try { return (new Function("return (" + raw + ");"))(); } catch (e) {}
 
     return null;
@@ -400,7 +398,7 @@
 
       if (!canvas) {
         if (Date.now() - start > 3000) {
-          showErr("未找到 canvas（页面未正确渲染 chart shortcode）");
+          showErr("未找到 canvas");
           return;
         }
         setTimeout(tick, 50);
@@ -409,7 +407,7 @@
 
       if (!window.Chart) {
         if (Date.now() - start > 5000) {
-          showErr("Chart.js 加载超时（请检查 js/chart.umd.min.js 是否存在且可访问）");
+          showErr("Chart.js 加载超时");
           return;
         }
         setTimeout(tick, 50);
@@ -419,9 +417,18 @@
       requestAnimationFrame(function () {
         var cfg = parseCfg();
         if (!cfg || typeof cfg !== "object") {
-          showErr("Chart 配置不是对象（请检查 chart shortcode 内 JSON 是否完整）");
-          console.error("Chart raw config text:", getRawCfgText());
+          showErr("Chart 配置解析失败");
           return;
+        }
+
+        
+        if (cfg.type === "bar") {
+          cfg.options = cfg.options || {};
+          cfg.options.scales = cfg.options.scales || {};
+          cfg.options.scales.x = cfg.options.scales.x || {};
+          cfg.options.scales.y = cfg.options.scales.y || {};
+          cfg.options.scales.x.barPercentage = 0.6;
+          cfg.options.scales.x.categoryPercentage = 0.8;
         }
 
         window.__hugoCharts = window.__hugoCharts || {};
@@ -433,7 +440,6 @@
           window.__hugoCharts[canvasId] = new Chart(canvas.getContext("2d"), cfg);
         } catch (e) {
           showErr("Chart 初始化失败：" + e);
-          console.error(e);
         }
       });
 
@@ -592,7 +598,6 @@ categories:</li>
   function getRawCfgText() {
     var el = document.getElementById(cfgId);
     if (!el) return "";
-    
     return (el.textContent || "").trim();
   }
 
@@ -600,14 +605,10 @@ categories:</li>
     var raw = getRawCfgText();
     if (!raw) return null;
 
-    
     raw = raw.replace(/^\s*```[a-zA-Z]*\s*/,'').replace(/```\s*$/,'').trim();
     if (!raw) return null;
 
-    
     try { return JSON.parse(raw); } catch (e) {}
-
-    
     try { return (new Function("return (" + raw + ");"))(); } catch (e) {}
 
     return null;
@@ -621,7 +622,7 @@ categories:</li>
 
       if (!canvas) {
         if (Date.now() - start > 3000) {
-          showErr("未找到 canvas（页面未正确渲染 chart shortcode）");
+          showErr("未找到 canvas");
           return;
         }
         setTimeout(tick, 50);
@@ -630,7 +631,7 @@ categories:</li>
 
       if (!window.Chart) {
         if (Date.now() - start > 5000) {
-          showErr("Chart.js 加载超时（请检查 js/chart.umd.min.js 是否存在且可访问）");
+          showErr("Chart.js 加载超时");
           return;
         }
         setTimeout(tick, 50);
@@ -640,9 +641,18 @@ categories:</li>
       requestAnimationFrame(function () {
         var cfg = parseCfg();
         if (!cfg || typeof cfg !== "object") {
-          showErr("Chart 配置不是对象（请检查 chart shortcode 内 JSON 是否完整）");
-          console.error("Chart raw config text:", getRawCfgText());
+          showErr("Chart 配置解析失败");
           return;
+        }
+
+        
+        if (cfg.type === "bar") {
+          cfg.options = cfg.options || {};
+          cfg.options.scales = cfg.options.scales || {};
+          cfg.options.scales.x = cfg.options.scales.x || {};
+          cfg.options.scales.y = cfg.options.scales.y || {};
+          cfg.options.scales.x.barPercentage = 0.6;
+          cfg.options.scales.x.categoryPercentage = 0.8;
         }
 
         window.__hugoCharts = window.__hugoCharts || {};
@@ -654,7 +664,6 @@ categories:</li>
           window.__hugoCharts[canvasId] = new Chart(canvas.getContext("2d"), cfg);
         } catch (e) {
           showErr("Chart 初始化失败：" + e);
-          console.error(e);
         }
       });
 
@@ -695,7 +704,6 @@ categories:</li>
   function getRawCfgText() {
     var el = document.getElementById(cfgId);
     if (!el) return "";
-    
     return (el.textContent || "").trim();
   }
 
@@ -703,14 +711,10 @@ categories:</li>
     var raw = getRawCfgText();
     if (!raw) return null;
 
-    
     raw = raw.replace(/^\s*```[a-zA-Z]*\s*/,'').replace(/```\s*$/,'').trim();
     if (!raw) return null;
 
-    
     try { return JSON.parse(raw); } catch (e) {}
-
-    
     try { return (new Function("return (" + raw + ");"))(); } catch (e) {}
 
     return null;
@@ -724,7 +728,7 @@ categories:</li>
 
       if (!canvas) {
         if (Date.now() - start > 3000) {
-          showErr("未找到 canvas（页面未正确渲染 chart shortcode）");
+          showErr("未找到 canvas");
           return;
         }
         setTimeout(tick, 50);
@@ -733,7 +737,7 @@ categories:</li>
 
       if (!window.Chart) {
         if (Date.now() - start > 5000) {
-          showErr("Chart.js 加载超时（请检查 js/chart.umd.min.js 是否存在且可访问）");
+          showErr("Chart.js 加载超时");
           return;
         }
         setTimeout(tick, 50);
@@ -743,9 +747,18 @@ categories:</li>
       requestAnimationFrame(function () {
         var cfg = parseCfg();
         if (!cfg || typeof cfg !== "object") {
-          showErr("Chart 配置不是对象（请检查 chart shortcode 内 JSON 是否完整）");
-          console.error("Chart raw config text:", getRawCfgText());
+          showErr("Chart 配置解析失败");
           return;
+        }
+
+        
+        if (cfg.type === "bar") {
+          cfg.options = cfg.options || {};
+          cfg.options.scales = cfg.options.scales || {};
+          cfg.options.scales.x = cfg.options.scales.x || {};
+          cfg.options.scales.y = cfg.options.scales.y || {};
+          cfg.options.scales.x.barPercentage = 0.6;
+          cfg.options.scales.x.categoryPercentage = 0.8;
         }
 
         window.__hugoCharts = window.__hugoCharts || {};
@@ -757,7 +770,6 @@ categories:</li>
           window.__hugoCharts[canvasId] = new Chart(canvas.getContext("2d"), cfg);
         } catch (e) {
           showErr("Chart 初始化失败：" + e);
-          console.error(e);
         }
       });
 

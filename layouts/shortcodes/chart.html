@@ -4,7 +4,7 @@
 <div style="max-width: 980px; margin: 16px 0;">
   <canvas id="{{ $id }}" width="980" height="{{ $h }}" style="width:100%; height:{{ $h }}px;"></canvas>
 
-  <!-- 关键：把配置放进隐藏 DOM，让浏览器帮我们“剥掉 HTML”，拿到纯文本 -->
+  <!-- 关键：把配置放进隐藏 DOM，让浏览器帮我们"剥掉 HTML"，拿到纯文本 -->
   <div id="{{ $id }}-cfg" style="display:none;">
     {{ .Inner }}
   </div>
@@ -26,7 +26,6 @@
   function getRawCfgText() {
     var el = document.getElementById(cfgId);
     if (!el) return "";
-    // textContent 会把 <pre><code> 等标签剥掉，只留下里面的 JSON 文本
     return (el.textContent || "").trim();
   }
 
@@ -34,14 +33,10 @@
     var raw = getRawCfgText();
     if (!raw) return null;
 
-    // 如果你文章里用了 ```json 代码块，这里会包含 ```，我们把它剥掉
     raw = raw.replace(/^\s*```[a-zA-Z]*\s*/,'').replace(/```\s*$/,'').trim();
     if (!raw) return null;
 
-    // 1) 严格 JSON
     try { return JSON.parse(raw); } catch (e) {}
-
-    // 2) 容错 JS 对象字面量
     try { return (new Function("return (" + raw + ");"))(); } catch (e) {}
 
     return null;
@@ -55,7 +50,7 @@
 
       if (!canvas) {
         if (Date.now() - start > 3000) {
-          showErr("未找到 canvas（页面未正确渲染 chart shortcode）");
+          showErr("未找到 canvas");
           return;
         }
         setTimeout(tick, 50);
@@ -64,7 +59,7 @@
 
       if (!window.Chart) {
         if (Date.now() - start > 5000) {
-          showErr("Chart.js 加载超时（请检查 js/chart.umd.min.js 是否存在且可访问）");
+          showErr("Chart.js 加载超时");
           return;
         }
         setTimeout(tick, 50);
@@ -74,9 +69,18 @@
       requestAnimationFrame(function () {
         var cfg = parseCfg();
         if (!cfg || typeof cfg !== "object") {
-          showErr("Chart 配置不是对象（请检查 chart shortcode 内 JSON 是否完整）");
-          console.error("Chart raw config text:", getRawCfgText());
+          showErr("Chart 配置解析失败");
           return;
+        }
+
+        // 添加默认选项让柱状图更小
+        if (cfg.type === "bar") {
+          cfg.options = cfg.options || {};
+          cfg.options.scales = cfg.options.scales || {};
+          cfg.options.scales.x = cfg.options.scales.x || {};
+          cfg.options.scales.y = cfg.options.scales.y || {};
+          cfg.options.scales.x.barPercentage = 0.6;
+          cfg.options.scales.x.categoryPercentage = 0.8;
         }
 
         window.__hugoCharts = window.__hugoCharts || {};
@@ -88,7 +92,6 @@
           window.__hugoCharts[canvasId] = new Chart(canvas.getContext("2d"), cfg);
         } catch (e) {
           showErr("Chart 初始化失败：" + e);
-          console.error(e);
         }
       });
 
