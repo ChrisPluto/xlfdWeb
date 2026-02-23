@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Thoughts on 小李飞刀的投资记录</title>
-    <link>https://ChrisPluto.github.io/dca-blog/thoughts/</link>
+    <link>https://ChrisPluto.github.io/xlfdWeb/thoughts/</link>
     <description>Recent content in Thoughts on 小李飞刀的投资记录</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 20 Jan 2026 00:00:00 +0900</lastBuildDate>
-    <atom:link href="https://ChrisPluto.github.io/dca-blog/thoughts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://ChrisPluto.github.io/xlfdWeb/thoughts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>我的投资想法第一篇</title>
-      <link>https://ChrisPluto.github.io/dca-blog/thoughts/sample/</link>
+      <link>https://ChrisPluto.github.io/xlfdWeb/thoughts/sample/</link>
       <pubDate>Tue, 20 Jan 2026 00:00:00 +0900</pubDate>
-      <guid>https://ChrisPluto.github.io/dca-blog/thoughts/sample/</guid>
+      <guid>https://ChrisPluto.github.io/xlfdWeb/thoughts/sample/</guid>
       <description>我的投资想法 这里将记录我的投资想法和思考&amp;hellip;&#xA;关于定投 定投是最适合普通人的投资方式&amp;hellip;&#xA;关于风险管理 永远不要投入超过你承受能力的资金&amp;hellip;</description>
     </item>
   </channel>

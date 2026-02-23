@@ -1,4 +1,4 @@
-baseURL = "https://ChrisPluto.github.io/dca-blog/"
+baseURL = "https://ChrisPluto.github.io/xlfdWeb/"
 languageCode = "zh-cn"
 title = "小李飞刀的投资记录"
 disableKinds = ["taxonomy", "term"]
