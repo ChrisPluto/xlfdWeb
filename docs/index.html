@@ -400,6 +400,19 @@ document.querySelectorAll('.sidebar-article').forEach(el => {
         
         if (articleContent) {
           contentArea.innerHTML = '' + articleContent.innerHTML;
+          
+          if (window.Chart) {
+            document.querySelectorAll('canvas[id^="chart-"]').forEach(function(canvas) {
+              var cfgId = canvas.id + '-cfg';
+              var cfgEl = document.getElementById(cfgId);
+              if (cfgEl) {
+                try {
+                  var cfg = JSON.parse(cfgEl.textContent.trim());
+                  new Chart(canvas.getContext('2d'), cfg);
+                } catch(e) {}
+              }
+            });
+          }
         } else {
           contentArea.innerHTML = '<div class="loading">加载失败</div>';
         }
@@ -447,6 +460,19 @@ document.querySelectorAll('.article-item').forEach(el => {
         
         if (articleContent) {
           contentArea.innerHTML = '' + articleContent.innerHTML;
+          
+          if (window.Chart) {
+            document.querySelectorAll('canvas[id^="chart-"]').forEach(function(canvas) {
+              var cfgId = canvas.id + '-cfg';
+              var cfgEl = document.getElementById(cfgId);
+              if (cfgEl) {
+                try {
+                  var cfg = JSON.parse(cfgEl.textContent.trim());
+                  new Chart(canvas.getContext('2d'), cfg);
+                } catch(e) {}
+              }
+            });
+          }
         } else {
           contentArea.innerHTML = '<div class="loading">加载失败</div>';
         }

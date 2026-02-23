@@ -399,6 +399,19 @@ document.querySelectorAll('.sidebar-article').forEach(el => {
         
         if (articleContent) {
           contentArea.innerHTML = '' + articleContent.innerHTML;
+          
+          if (window.Chart) {
+            document.querySelectorAll('canvas[id^="chart-"]').forEach(function(canvas) {
+              var cfgId = canvas.id + '-cfg';
+              var cfgEl = document.getElementById(cfgId);
+              if (cfgEl) {
+                try {
+                  var cfg = JSON.parse(cfgEl.textContent.trim());
+                  new Chart(canvas.getContext('2d'), cfg);
+                } catch(e) {}
+              }
+            });
+          }
         } else {
           contentArea.innerHTML = '<div class="loading">加载失败</div>';
         }
@@ -446,6 +459,19 @@ document.querySelectorAll('.article-item').forEach(el => {
         
         if (articleContent) {
           contentArea.innerHTML = '' + articleContent.innerHTML;
+          
+          if (window.Chart) {
+            document.querySelectorAll('canvas[id^="chart-"]').forEach(function(canvas) {
+              var cfgId = canvas.id + '-cfg';
+              var cfgEl = document.getElementById(cfgId);
+              if (cfgEl) {
+                try {
+                  var cfg = JSON.parse(cfgEl.textContent.trim());
+                  new Chart(canvas.getContext('2d'), cfg);
+                } catch(e) {}
+              }
+            });
+          }
         } else {
           contentArea.innerHTML = '<div class="loading">加载失败</div>';
         }
@@ -468,6 +494,17 @@ fetch('https://api.alternative.me/fng/')
   .catch(err => {
     document.getElementById('fng-value').textContent = '--';
   });
+
+
+const urlParams = new URLSearchParams(window.location.search);
+const monthParam = urlParams.get('month');
+if (monthParam) {
+  document.querySelectorAll('.sidebar-month').forEach(el => {
+    if (el.getAttribute('data-month') === monthParam) {
+      el.click();
+    }
+  });
+}
 </script>
 
 
