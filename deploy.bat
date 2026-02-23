@@ -1,9 +1,16 @@
 @echo off
 cd /d %~dp0
 
-git add .
-git commit -m "daily update %date% %time%"
+echo Building site...
+hugo
 
+echo Adding files...
+git add .
+
+echo Committing...
+git commit -m "update %date% %time%"
+
+echo Pulling...
 git pull --rebase origin main
 IF ERRORLEVEL 1 (
   echo [ERROR] pull failed. fix conflicts then run again.
@@ -11,5 +18,7 @@ IF ERRORLEVEL 1 (
   exit /b 1
 )
 
+echo Pushing to GitHub...
 git push origin main
+echo Done!
 pause
