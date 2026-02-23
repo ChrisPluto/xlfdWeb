@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Teches on 小李飞刀的投资记录</title>
+    <link>https://ChrisPluto.github.io/xlfdWeb/tech/</link>
+    <description>Recent content in Teches on 小李飞刀的投资记录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 10 Jan 2026 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://ChrisPluto.github.io/xlfdWeb/tech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>技术学习笔记</title>
+      <link>https://ChrisPluto.github.io/xlfdWeb/tech/sample/</link>
+      <pubDate>Sat, 10 Jan 2026 00:00:00 +0900</pubDate>
+      <guid>https://ChrisPluto.github.io/xlfdWeb/tech/sample/</guid>
+      <description>技术学习笔记 这里将记录我的技术学习内容&amp;hellip;&#xA;学习方向 前端开发 区块链技术 数据分析 </description>
+    </item>
+  </channel>
+</rss>

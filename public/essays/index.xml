@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Essays on 小李飞刀的投资记录</title>
+    <link>https://ChrisPluto.github.io/xlfdWeb/essays/</link>
+    <description>Recent content in Essays on 小李飞刀的投资记录</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 25 Jan 2026 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://ChrisPluto.github.io/xlfdWeb/essays/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>关于Agent</title>
+      <link>https://ChrisPluto.github.io/xlfdWeb/essays/sample/</link>
+      <pubDate>Sun, 25 Jan 2026 00:00:00 +0900</pubDate>
+      <guid>https://ChrisPluto.github.io/xlfdWeb/essays/sample/</guid>
+      <description>虽然使用AI的人，在人群中的绝对值占比还很少，但单体通过使用AI，带来的生产力提升，在信息型脑力劳动领域，是十倍，甚至数十倍的。&#xA;现在Agent逐渐普及后，这个倍数后面，还要基于部署的agent数量，乘以一个系数。&#xA;基于社会发展的惯性，在相当长的一段时间内，社会总需求不会同步增加十倍、数十倍，总会滞后。&#xA;价格，基于供需。&#xA;而倍增的生产力供给，会在供给侧，形成海啸，这将极大削弱，提供生产力的个体的议价能力。&#xA;活还在，需求还在，但同样的活，价格会被击穿，同时，需要的个体数量会骤减。&#xA;回顾历史，需求侧最终都会追上来，新技术会催生出今天想不到的新需求，但那是五到十年后的事，而供给侧的冲击，是这两三年的事。&#xA;这个时间差，就是痛苦本身。&#xA;生产力的膨胀和需求增长的迟滞，这才是我心中的焦虑来源。&#xA;但焦虑本身，就是信号，是动力&#xA;在海啸来临前，想办法造条船吧</description>
+    </item>
+  </channel>
+</rss>

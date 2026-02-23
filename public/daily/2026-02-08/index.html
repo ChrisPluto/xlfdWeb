@@ -1,0 +1,682 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" type="image/png" href="/images/favicon.png">
+
+  <meta charset="utf-8">
+  <title>2026-02-08，定投第96天，收益率：-16.80%</title>
+
+  <link rel="stylesheet" href='/xlfdWeb/css/custom.css'>
+
+  
+  <script defer src='/xlfdWeb/js/chart.umd.min.js'></script>
+  
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+<header id="site-header">
+  <div class="header-inner">
+    <div class="header-content">
+      <div class="header-left">
+        <a class="site-brand" href='https://ChrisPluto.github.io/xlfdWeb/'>
+          <span class="site-emoji">📘</span>
+          <span class="site-title">小李飞刀的投资记录</span>
+        </a>
+      </div>
+
+      <div class="header-center">
+        <div class="search-box" style="position:relative;">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" placeholder="搜索…" class="search-input" id="search-input">
+          <kbd class="search-shortcut">⌘K</kbd>
+          <div id="search-results" class="search-results"></div>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <nav class="header-nav">
+          <a href="/mydca/daily/" class="nav-link">
+            <i class="fas fa-calendar-day"></i> <span>只买不卖定投三十年</span>
+          </a>
+          <a href="/mydca/insights/" class="nav-link">
+            <i class="fas fa-lightbulb"></i> <span>整理与思考</span>
+          </a>
+          <a href="/mydca/tech/" class="nav-link">
+            <i class="fas fa-code"></i> <span>技术洞见</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<div class="main-wrapper">
+  
+
+
+
+
+
+
+
+<style>
+.with-sidebar { display: flex; gap: 0; max-width: 1400px; margin: 0 auto; }
+.sidebar-nav { width: 300px; flex: 0 0 300px; position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto; border-right: 1px solid #e5e7eb; background: #fafafa; padding: 16px 0; }
+.sidebar-group { margin-bottom: 8px; }
+.sidebar-group-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #6b7280; }
+.sidebar-links { padding: 0 8px; }
+.sidebar-parent { display: flex; align-items: center; padding: 10px 12px; border-radius: 8px; font-size: 14px; color: #4b5563; cursor: pointer; text-decoration: none; }
+.sidebar-parent:hover { background: #f3f4f6; color: #1a1dc3; }
+.sidebar-chevron { font-size: 11px; color: #9ca3af; transition: transform 0.2s; margin-left: auto; }
+.sidebar-parent.open > .sidebar-chevron { transform: rotate(90deg); }
+.sidebar-children { display: none; padding-left: 20px; margin-top: 4px; }
+.sidebar-parent.open + .sidebar-children { display: block; }
+.sidebar-year { display: flex; align-items: center; padding: 8px 10px; border-radius: 6px; font-size: 14px; color: #4b5563; cursor: pointer; }
+.sidebar-year.open > .sidebar-chevron { transform: rotate(90deg); }
+.sidebar-months { display: none; padding-left: 16px; }
+.sidebar-year.open + .sidebar-months { display: block; }
+.sidebar-month { padding: 6px 10px; font-size: 13px; color: #6b7280; border-radius: 4px; cursor: pointer; text-decoration: none; display: block; }
+.sidebar-month:hover, .sidebar-month.active { background: #f3f4f6; color: #1a1dc3; }
+.sidebar-link { display: block; padding: 8px 10px; font-size: 13px; color: #6b7280; border-radius: 4px; text-decoration: none; }
+.sidebar-link:hover { background: #f3f4f6; color: #1a1dc3; }
+.main-content { flex: 1; min-width: 0; padding: 32px 40px; overflow-y: auto; max-height: calc(100vh - 64px); }
+.article-header { margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #e5e7eb; }
+.article-title { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+.article-meta { font-size: 13px; color: #9ca3af; }
+.article-content { font-size: 15px; line-height: 1.8; }
+.article-content h2 { margin-top: 24px; margin-bottom: 12px; font-size: 20px; }
+.article-content p { margin-bottom: 16px; }
+@media (max-width: 900px) { .with-sidebar { flex-direction: column; } .sidebar-nav { width: 100%; border-right: none; border-bottom: 1px solid #e5e7eb; } }
+</style>
+
+<div class="with-sidebar">
+  <aside class="sidebar-nav">
+    
+    <div class="sidebar-group">
+      <div class="sidebar-group-header">📊 投资记录</div>
+      <div class="sidebar-links">
+        <div class="sidebar-parent open" onclick="this.classList.toggle('open')">
+          <span>📈</span>
+          <span style="margin-left:8px">只买不卖定投三十年</span>
+          <i class="fas fa-chevron-right sidebar-chevron"></i>
+        </div>
+        <div class="sidebar-children">
+          
+            <div class="sidebar-year open" onclick="event.stopPropagation(); this.classList.toggle('open')">
+              2026 年
+              <i class="fas fa-chevron-right sidebar-chevron" style="font-size:10px;margin-left:auto;"></i>
+            </div>
+            <div class="sidebar-months">
+              
+                
+                
+                <div class="sidebar-month">2月</div>
+                <div style="padding-left:12px;">
+                  
+                    <a href="/xlfdWeb/daily/2026-02-22/" class="sidebar-link" style="background:#f3f4f6;">2/22</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-02-21/" class="sidebar-link" style="background:#f3f4f6;">2/21</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-02-20/" class="sidebar-link" style="background:#f3f4f6;">2/20</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-02-19/" class="sidebar-link" style="background:#f3f4f6;">2/19</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-02-18/" class="sidebar-link" style="background:#f3f4f6;">2/18</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-02-17/" class="sidebar-link" style="background:#f3f4f6;">2/17</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-02-16/" class="sidebar-link" style="background:#f3f4f6;">2/16</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-02-14/" class="sidebar-link" style="background:#f3f4f6;">2/14</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-02-13/" class="sidebar-link" style="background:#f3f4f6;">2/13</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-02-12/" class="sidebar-link" style="background:#f3f4f6;">2/12</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-02-11/" class="sidebar-link" style="background:#f3f4f6;">2/11</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-02-10/" class="sidebar-link" style="background:#f3f4f6;">2/10</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-02-09/" class="sidebar-link" style="background:#f3f4f6;">2/9</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-02-08/" class="sidebar-link active" style="background:#f3f4f6;">2/8</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-02-07/" class="sidebar-link" style="background:#f3f4f6;">2/7</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-02-06/" class="sidebar-link" style="background:#f3f4f6;">2/6</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-02-05/" class="sidebar-link" style="background:#f3f4f6;">2/5</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-02-04/" class="sidebar-link" style="background:#f3f4f6;">2/4</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-02-03/" class="sidebar-link" style="background:#f3f4f6;">2/3</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-02-02/" class="sidebar-link" style="background:#f3f4f6;">2/2</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-02-01/" class="sidebar-link" style="background:#f3f4f6;">2/1</a>
+                  
+                </div>
+              
+                
+                
+                <div class="sidebar-month">1月</div>
+                <div style="padding-left:12px;">
+                  
+                    <a href="/xlfdWeb/daily/2026-01-31/" class="sidebar-link" style="background:#f3f4f6;">1/31</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-01-29/" class="sidebar-link" style="background:#f3f4f6;">1/29</a>
+                  
+                    <a href="/xlfdWeb/daily/2026-01-28/" class="sidebar-link" style="background:#f3f4f6;">1/28</a>
+                  
+                </div>
+              
+            </div>
+          
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="sidebar-group">
+      <div class="sidebar-group-header">💡 投资学习</div>
+      <div class="sidebar-links">
+        <a href="/mydca/insights/" class="sidebar-parent">
+          <span>📚</span>
+          <span style="margin-left:8px">整理与思考</span>
+        </a>
+      </div>
+    </div>
+    
+    
+    <div class="sidebar-group">
+      <div class="sidebar-group-header">💭 投资智慧</div>
+      <div class="sidebar-links">
+        <a href="/mydca/thoughts/" class="sidebar-parent">
+          <span>💡</span>
+          <span style="margin-left:8px">投资策略与哲思</span>
+        </a>
+      </div>
+    </div>
+    
+    
+    <div class="sidebar-group">
+      <div class="sidebar-group-header">⚡ 技术栈</div>
+      <div class="sidebar-links">
+        <a href="/mydca/tech/" class="sidebar-parent">
+          <span>💻</span>
+          <span style="margin-left:8px">技术洞见</span>
+        </a>
+      </div>
+    </div>
+    
+    
+    <div class="sidebar-group">
+      <div class="sidebar-group-header">📝 杂文随笔</div>
+      <div class="sidebar-links">
+        <a href="/mydca/essays/" class="sidebar-parent">
+          <span>📝</span>
+          <span style="margin-left:8px">杂文随笔</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+  
+  <main class="main-content">
+    <div class="article-header">
+      <h1 class="article-title">2026-02-08，定投第96天，收益率：-16.80%</h1>
+      <div class="article-meta">2026-02-08</div>
+    </div>
+    
+    <div class="article-content">
+      <h2 id="-今日行情">📊 今日行情</h2>
+<h3 id="截止-font-colorgrey-size5-2026-02-08-095548font">截止 <font color=grey size=5 ><strong>2026-02-08 09:55:48</strong></font></h3>
+<ul>
+<li>
+<p>🍖 全球加密市场总市值为：<font color=#FF0000 size=4 > <strong>2377954025206</strong></font> USDT，24h内变化：<font color=#FF0000 size=5 > <strong>-0.90%</strong></font></p>
+</li>
+<li>
+<p>🍤 24h总交易量为：<font color=#FF0000 size=4 > <strong>141741671525</strong></font> USDT，24h内变化：<font color=#FF0000 size=5 > <strong>-36.36%</strong></font></p>
+</li>
+</ul>
+<h2 id="-我的持仓占比">🎨 我的持仓占比</h2>
+<div style="max-width: 980px; margin: 16px 0;">
+  <canvas id="chart-daily/2026-02-08.md-0" width="980" height="420" style="width:100%; height:420px;"></canvas>
+
+  
+  <div id="chart-daily/2026-02-08.md-0-cfg" style="display:none;">
+    {"type":"doughnut","data":{"labels":["btc","eth","sol"],"datasets":[{"data":[6500.4416524,999.791872,2700],"backgroundColor":["#1FE749","#199297","#617D3C"]}]},"options":{"plugins":{"title":{"display":true,"text":"小李飞刀的持仓环形分布图(单位：usdt)"},"legend":{"display":true,"position":"right"}},"maintainAspectRatio":false}}
+  </div>
+
+  <div id="chart-daily/2026-02-08.md-0-err" style="margin-top:8px; color:#b00020; font-size:14px; white-space:pre-wrap;"></div>
+</div>
+
+<script>
+(function () {
+  var canvasId = "chart-daily\/2026-02-08.md-0";
+  var cfgId = "chart-daily\/2026-02-08.md-0-cfg";
+  var errId = "chart-daily\/2026-02-08.md-0-err";
+
+  function showErr(msg) {
+    var el = document.getElementById(errId);
+    if (el) el.textContent = msg;
+  }
+
+  function getRawCfgText() {
+    var el = document.getElementById(cfgId);
+    if (!el) return "";
+    
+    return (el.textContent || "").trim();
+  }
+
+  function parseCfg() {
+    var raw = getRawCfgText();
+    if (!raw) return null;
+
+    
+    raw = raw.replace(/^\s*```[a-zA-Z]*\s*/,'').replace(/```\s*$/,'').trim();
+    if (!raw) return null;
+
+    
+    try { return JSON.parse(raw); } catch (e) {}
+
+    
+    try { return (new Function("return (" + raw + ");"))(); } catch (e) {}
+
+    return null;
+  }
+
+  function renderWhenReady() {
+    var start = Date.now();
+
+    (function tick() {
+      var canvas = document.getElementById(canvasId);
+
+      if (!canvas) {
+        if (Date.now() - start > 3000) {
+          showErr("未找到 canvas（页面未正确渲染 chart shortcode）");
+          return;
+        }
+        setTimeout(tick, 50);
+        return;
+      }
+
+      if (!window.Chart) {
+        if (Date.now() - start > 5000) {
+          showErr("Chart.js 加载超时（请检查 js/chart.umd.min.js 是否存在且可访问）");
+          return;
+        }
+        setTimeout(tick, 50);
+        return;
+      }
+
+      requestAnimationFrame(function () {
+        var cfg = parseCfg();
+        if (!cfg || typeof cfg !== "object") {
+          showErr("Chart 配置不是对象（请检查 chart shortcode 内 JSON 是否完整）");
+          console.error("Chart raw config text:", getRawCfgText());
+          return;
+        }
+
+        window.__hugoCharts = window.__hugoCharts || {};
+        if (window.__hugoCharts[canvasId]) {
+          try { window.__hugoCharts[canvasId].destroy(); } catch(e) {}
+        }
+
+        try {
+          window.__hugoCharts[canvasId] = new Chart(canvas.getContext("2d"), cfg);
+        } catch (e) {
+          showErr("Chart 初始化失败：" + e);
+          console.error(e);
+        }
+      });
+
+    })();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", renderWhenReady);
+  } else {
+    renderWhenReady();
+  }
+})();
+</script>
+
+<h2 id="-我的定投收益分布">🍺 我的定投收益分布</h2>
+<div style="max-width: 980px; margin: 16px 0;">
+  <canvas id="chart-daily/2026-02-08.md-1" width="980" height="420" style="width:100%; height:420px;"></canvas>
+
+  
+  <div id="chart-daily/2026-02-08.md-1-cfg" style="display:none;">
+    {"type":"bar","data":{"labels":["btc","eth","sol"],"datasets":[{"data":[-542.04734165,-171.15066531,-1000.52195895],"backgroundColor":["#1FE749","#199297","#617D3C"]}]},"options":{"plugins":{"title":{"display":true,"text":"小李飞刀的持仓收益柱状图(单位：usdt)"},"legend":{"display":false,"position":"right"}},"maintainAspectRatio":false}}
+  </div>
+
+  <div id="chart-daily/2026-02-08.md-1-err" style="margin-top:8px; color:#b00020; font-size:14px; white-space:pre-wrap;"></div>
+</div>
+
+<script>
+(function () {
+  var canvasId = "chart-daily\/2026-02-08.md-1";
+  var cfgId = "chart-daily\/2026-02-08.md-1-cfg";
+  var errId = "chart-daily\/2026-02-08.md-1-err";
+
+  function showErr(msg) {
+    var el = document.getElementById(errId);
+    if (el) el.textContent = msg;
+  }
+
+  function getRawCfgText() {
+    var el = document.getElementById(cfgId);
+    if (!el) return "";
+    
+    return (el.textContent || "").trim();
+  }
+
+  function parseCfg() {
+    var raw = getRawCfgText();
+    if (!raw) return null;
+
+    
+    raw = raw.replace(/^\s*```[a-zA-Z]*\s*/,'').replace(/```\s*$/,'').trim();
+    if (!raw) return null;
+
+    
+    try { return JSON.parse(raw); } catch (e) {}
+
+    
+    try { return (new Function("return (" + raw + ");"))(); } catch (e) {}
+
+    return null;
+  }
+
+  function renderWhenReady() {
+    var start = Date.now();
+
+    (function tick() {
+      var canvas = document.getElementById(canvasId);
+
+      if (!canvas) {
+        if (Date.now() - start > 3000) {
+          showErr("未找到 canvas（页面未正确渲染 chart shortcode）");
+          return;
+        }
+        setTimeout(tick, 50);
+        return;
+      }
+
+      if (!window.Chart) {
+        if (Date.now() - start > 5000) {
+          showErr("Chart.js 加载超时（请检查 js/chart.umd.min.js 是否存在且可访问）");
+          return;
+        }
+        setTimeout(tick, 50);
+        return;
+      }
+
+      requestAnimationFrame(function () {
+        var cfg = parseCfg();
+        if (!cfg || typeof cfg !== "object") {
+          showErr("Chart 配置不是对象（请检查 chart shortcode 内 JSON 是否完整）");
+          console.error("Chart raw config text:", getRawCfgText());
+          return;
+        }
+
+        window.__hugoCharts = window.__hugoCharts || {};
+        if (window.__hugoCharts[canvasId]) {
+          try { window.__hugoCharts[canvasId].destroy(); } catch(e) {}
+        }
+
+        try {
+          window.__hugoCharts[canvasId] = new Chart(canvas.getContext("2d"), cfg);
+        } catch (e) {
+          showErr("Chart 初始化失败：" + e);
+          console.error(e);
+        }
+      });
+
+    })();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", renderWhenReady);
+  } else {
+    renderWhenReady();
+  }
+})();
+</script>
+
+<h2 id="-我的定投策略">📋 我的定投策略</h2>
+<blockquote>
+<p>定投 = 固定时间 + 固定金额 + 长期执行。不猜高点、不抄底、不预测行情。我于2021年 BTC 69000U 牛市最高点跟随Anbang对市值前100的币进行定投，定投持续了三年，于2024年取得了相当可观的盈利。所以我开始了新一轮的只买不卖三十年定投计划。</p>
+</blockquote>
+<h3 id="-我的定投策略制定于-2025-11-05今天是我践行定投策略的第font-colorff0000-size5--95font-天">✏️ 我的定投策略制定于 <strong>2025-11-05</strong>，今天是我践行定投策略的第<font color=#FF0000 size=5 > <strong>95</strong></font> 天。</h3>
+<p>我将以月为单位，每月定投 <font size=3 ><strong> 500 </strong></font> USDT(根据行情不同会有调整，比如遇到黑天鹅我可能会进行大额抄底)。具体币种目前暂定为市值前50。这个策略覆盖的币种比较广，风险也极大，所以我会将每次定投的大头都用来买BTC、ETH、SOL、BNB等主流币，如果出现了好的投资标的时，我会进行小额押注。主打一个长期持有，主打一个稳。</p>
+<p>我进行只买不卖守币三十年的底层逻辑：币圈如今的市值相比较主流金融产品仍然是非常小。最近贵金属连番上涨，白银短短一个月内市值的涨幅都远超比特币总市值，非常夸张。由此可见，币圈在传统金融面前仍然属于早期，长期浸淫在币圈的人可能很难感知到这一点，所以，雷打不动定投可以说是保守派最为稳妥的投资策略。</p>
+<ul>
+<li>🥇 当月市值最高的币种 <font size=4 >250</font>USDT</li>
+<li>🥈 当月市值第2高的币种 <font size=4 >150</font>USDT</li>
+<li>🥉 当月若有好的标的，合计 <font size=4 >100</font>USDT</li>
+<li>🏅 感兴趣(被CX)或者社区治理优秀的币种，<font size=4 >待定</font>USDT</li>
+</ul>
+<p>熊市总是比牛市长，并且长很多很多……我将通过定投不断的在漫长的熊市中积聚能量。</p>
+<h2 id="-24小时收益情况">⏰ 24小时收益情况</h2>
+<p>📌 过去的24小时我的持仓总收益为：<font color=#FF0000 size=5 ><strong>-66.04543448999999</strong></font> USDT</p>
+<p>👉 每个币种的详细数据如下：</p>
+<table>
+    <thead><tr bgcolor="#d0d0d0" ><th>币种</th><th>排名</th><th>市值(USDT)</th><th>24h交易量(USDT)</th><th>24h%</th><th>7d%</th><th>24h收益</th></tr></thead>
+    <tbody>
+    <tr>
+        <td bgcolor=#FFECEC>btc</td>
+        <td bgcolor=#FFECEC>1</td>
+        <td bgcolor=#FFECEC>1387134789585</td>
+        <td bgcolor=#FFECEC>59925587954</td>
+        <td bgcolor=#FFECEC><font color=#FF0000>-1.49%</font></td>
+        <td bgcolor=#FFECEC><font color=#FF0000>-11.47%</font></td>
+        <td bgcolor=#FFECEC><font color=#FF0000 size=3 ><strong>-90.05829904</strong></font></td>
+    </tr>
+    <tr>
+        <td bgcolor=#F0FFF0>eth</td>
+        <td bgcolor=#F0FFF0>2</td>
+        <td bgcolor=#F0FFF0>252820835876</td>
+        <td bgcolor=#F0FFF0>39266310324</td>
+        <td bgcolor=#F0FFF0><font color=#00EC00>1.71%</font></td>
+        <td bgcolor=#F0FFF0><font color=#FF0000>-14.22%</font></td>
+        <td bgcolor=#F0FFF0><font color=#00EC00 size=3 ><strong>13.9378224</strong></font></td>
+    </tr>
+    <tr>
+        <td bgcolor=#F0FFF0>sol</td>
+        <td bgcolor=#F0FFF0>7</td>
+        <td bgcolor=#F0FFF0>49827209404</td>
+        <td bgcolor=#F0FFF0>4791307376</td>
+        <td bgcolor=#F0FFF0><font color=#00EC00>0.60%</font></td>
+        <td bgcolor=#F0FFF0><font color=#FF0000>-16.19%</font></td>
+        <td bgcolor=#F0FFF0><font color=#00EC00 size=3 ><strong>10.07504215</strong></font></td>
+    </tr>
+    </tbody>
+</table>
+<h2 id="-持仓整体收益数据">🎯 持仓整体收益数据</h2>
+<p>🔒 我的持仓总成本为：<font size=3 ><strong>10200.2335244</strong></font> USDT，截止 <strong>2026-02-08 09:55:48</strong>，总价值为：<font  size=5 ><strong>8486.51355849</strong></font> USDT</p>
+<p>💰 利润： <font color=#FF0000 size=3 ><strong>-1713.71996591</strong></font> USDT，收益率：<font color=#FF0000 size=4 ><strong>-16.80%</strong></font></p>
+<p>👉 每个币种的详细收益数据如下：</p>
+<table>
+    <thead><tr bgcolor="#d0d0d0" ><th>币种</th><th>持有数量(个)</th><th>现价(USDT)</th><th>总金额(USDT)</th><th>持仓均价(USDT)</th><th>成本(USDT)</th><th>利润(USDT)</th><th>收益率</th></tr></thead>
+    <tbody>
+    <tr>
+        <td bgcolor=#FFECEC>btc</td>
+        <td bgcolor=#FFECEC>0.08584885</td>
+        <td bgcolor=#FFECEC>69405.63922234</td>
+        <td bgcolor=#FFECEC>5958.39431075</td>
+        <td bgcolor=#FFECEC>75719.61246307</td>
+        <td bgcolor=#FFECEC>6500.4416524</td>
+        <td bgcolor=#FFECEC>-542.04734165</td>
+        <td bgcolor=#FFECEC><font color=#FF0000 size=3 ><strong>-8.34%</strong></font></td>
+    </tr>
+    <tr>
+        <td bgcolor=#FFECEC>eth</td>
+        <td bgcolor=#FFECEC>0.39558007</td>
+        <td bgcolor=#FFECEC>2094.74963359</td>
+        <td bgcolor=#FFECEC>828.64120669</td>
+        <td bgcolor=#FFECEC>2527.407086</td>
+        <td bgcolor=#FFECEC>999.791872</td>
+        <td bgcolor=#FFECEC>-171.15066531</td>
+        <td bgcolor=#FFECEC><font color=#FF0000 size=3 ><strong>-17.12%</strong></font></td>
+    </tr>
+    <tr>
+        <td bgcolor=#FFECEC>sol</td>
+        <td bgcolor=#FFECEC>19.3527</td>
+        <td bgcolor=#FFECEC>87.81606913</td>
+        <td bgcolor=#FFECEC>1699.47804105</td>
+        <td bgcolor=#FFECEC>139.51541645</td>
+        <td bgcolor=#FFECEC>2700</td>
+        <td bgcolor=#FFECEC>-1000.52195895</td>
+        <td bgcolor=#FFECEC><font color=#FF0000 size=3 ><strong>-37.06%</strong></font></td>
+    </tr>
+    </tbody>
+</table>
+<h2 id="-空投钱包">🤞 空投钱包</h2>
+<ul>
+<li>eth: 0x886957d90cd88841541e4924A3c141b0c8faA039</li>
+<li>bsc: 0x886957d90cd88841541e4924A3c141b0c8faA039</li>
+<li>btc: bc1qzt2r09jk2fw4qvtx0yuagex3lmgxajrzwwpdv6</li>
+</ul>
+<h2 id="-风险友情提示">⚠️ 风险友情提示</h2>
+<p>❤️没有任何社群，仅认准右上角推特和油管频道❤️</p>
+<p>❤️所有推文均为个人观点，不作为任何投资建议。❤️</p>
+
+    </div>
+  </main>
+</div>
+
+
+</div>
+
+<style>
+.search-results {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+.search-results.active { display: block; }
+.search-result-item {
+  display: block;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: #4b5563;
+  border-bottom: 1px solid #f3f4f6;
+}
+.search-result-item:hover { background: #f3f4f6; color: #1a1dc3; }
+.search-result-item:last-child { border-bottom: none; }
+.search-result-title { font-weight: 500; }
+.search-result-section { font-size: 12px; color: #9ca3af; }
+</style>
+
+<script>
+const searchInput = document.getElementById('search-input');
+const searchResults = document.getElementById('search-results');
+
+const pages = [
+
+  { title: "2026-02-22，定投第110天，收益率：-17.66%", url: "\/xlfdWeb\/daily\/2026-02-22\/", section: "daily" },
+
+  { title: "2026-02-21，定投第109天，收益率：-17.72%", url: "\/xlfdWeb\/daily\/2026-02-21\/", section: "daily" },
+
+  { title: "2026-02-20，定投第108天，收益率：-18.84%", url: "\/xlfdWeb\/daily\/2026-02-20\/", section: "daily" },
+
+  { title: "2026-02-19，定投第107天，收益率：-19.74%", url: "\/xlfdWeb\/daily\/2026-02-19\/", section: "daily" },
+
+  { title: "2026-02-18，定投第106天，收益率：-18.21%", url: "\/xlfdWeb\/daily\/2026-02-18\/", section: "daily" },
+
+  { title: "2026-02-17，定投第105天，收益率：-17.90%", url: "\/xlfdWeb\/daily\/2026-02-17\/", section: "daily" },
+
+  { title: "2026-02-16，定投第104天，收益率：-17.60%", url: "\/xlfdWeb\/daily\/2026-02-16\/", section: "daily" },
+
+  { title: "2026-02-14，定投第102天，收益率：-15.89%", url: "\/xlfdWeb\/daily\/2026-02-14\/", section: "daily" },
+
+  { title: "2026-02-13，定投第101天，收益率：-21.25%", url: "\/xlfdWeb\/daily\/2026-02-13\/", section: "daily" },
+
+  { title: "2026-02-12，定投第100天，收益率：-20.35%", url: "\/xlfdWeb\/daily\/2026-02-12\/", section: "daily" },
+
+  { title: "2026-02-11，定投第99天，收益率：-18.73%", url: "\/xlfdWeb\/daily\/2026-02-11\/", section: "daily" },
+
+  { title: "2026-02-10，定投第98天，收益率：-17.37%", url: "\/xlfdWeb\/daily\/2026-02-10\/", section: "daily" },
+
+  { title: "2026-02-09，定投第97天，收益率：-15.85%", url: "\/xlfdWeb\/daily\/2026-02-09\/", section: "daily" },
+
+  { title: "2026-02-08，定投第96天，收益率：-16.80%", url: "\/xlfdWeb\/daily\/2026-02-08\/", section: "daily" },
+
+  { title: "2026-02-07，定投第95天，收益率：-16.19%", url: "\/xlfdWeb\/daily\/2026-02-07\/", section: "daily" },
+
+  { title: "2026-02-06，定投第94天，收益率：-23.97%", url: "\/xlfdWeb\/daily\/2026-02-06\/", section: "daily" },
+
+  { title: "2026-02-05，定投第93天，收益率：-24.28%", url: "\/xlfdWeb\/daily\/2026-02-05\/", section: "daily" },
+
+  { title: "2026-02-04，定投第92天，收益率：-17.76%", url: "\/xlfdWeb\/daily\/2026-02-04\/", section: "daily" },
+
+  { title: "2026-02-03，定投第91天，收益率：-15.85%", url: "\/xlfdWeb\/daily\/2026-02-03\/", section: "daily" },
+
+  { title: "2026-02-02，定投第90天，收益率：-19.90%", url: "\/xlfdWeb\/daily\/2026-02-02\/", section: "daily" },
+
+  { title: "2026-02-01，定投第89天，收益率：-14.16%", url: "\/xlfdWeb\/daily\/2026-02-01\/", section: "daily" },
+
+  { title: "2026-01-31，定投第88天，收益率：-10.26%", url: "\/xlfdWeb\/daily\/2026-01-31\/", section: "daily" },
+
+  { title: "2026-01-29，定投第86天，收益率：-3.19%", url: "\/xlfdWeb\/daily\/2026-01-29\/", section: "daily" },
+
+  { title: "2026-01-28，定投第85天，收益率：-2.30%", url: "\/xlfdWeb\/daily\/2026-01-28\/", section: "daily" },
+
+  { title: "关于Agent", url: "\/xlfdWeb\/essays\/sample\/", section: "essays" },
+
+  { title: "我的投资想法第一篇", url: "\/xlfdWeb\/thoughts\/sample\/", section: "thoughts" },
+
+  { title: "投资心得第一篇", url: "\/xlfdWeb\/insights\/sample\/", section: "insights" },
+
+  { title: "技术学习笔记", url: "\/xlfdWeb\/tech\/sample\/", section: "tech" },
+
+];
+
+searchInput.addEventListener('input', function() {
+  const query = this.value.toLowerCase();
+  if (query.length < 1) {
+    searchResults.classList.remove('active');
+    return;
+  }
+  
+  const results = pages.filter(p => 
+    p.title.toLowerCase().includes(query) || p.section.includes(query)
+  ).slice(0, 10);
+  
+  if (results.length > 0) {
+    searchResults.innerHTML = results.map(r => 
+      '<a href="' + r.url + '" class="search-result-item">' +
+        '<div class="search-result-title">' + r.title + '</div>' +
+        '<div class="search-result-section">' + r.section + '</div>' +
+      '</a>'
+    ).join('');
+    searchResults.classList.add('active');
+  } else {
+    searchResults.innerHTML = '<div class="search-result-item">未找到结果</div>';
+    searchResults.classList.add('active');
+  }
+});
+
+document.addEventListener('click', function(e) {
+  if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+    searchResults.classList.remove('active');
+  }
+});
+</script>
+
+</body>
+</html>
