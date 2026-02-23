@@ -200,8 +200,18 @@
     
     <div class="article-list" id="records-list">
       {{ range sort $dailyPages "Date" "desc" }}
+      {{ $startDate := time.AsTime "2025-11-05" }}
+      {{ $postDate := .Date }}
+      {{ $days := div (sub $postDate.Unix $startDate.Unix) 86400 | int }}
+      {{ $days = add $days 1 }}
+      {{ $yield := .Params.yield }}
+      {{ $yieldStr := "" }}
+      {{ if $yield }}
+        {{ $yieldStr = printf "，收益率：%s%%" ($yield | string) }}
+      {{ end }}
+      {{ $newTitle := printf "%s，定投第%d天%s" ($postDate.Format "2006-01-02") $days $yieldStr }}
       <div class="article-item" data-url="{{ .RelPermalink }}" data-date="{{ .Date.Format "2006-01" }}">
-        <div class="article-title">{{ .Title }}</div>
+        <div class="article-title">{{ $newTitle }}</div>
         <div class="article-date">{{ .Date.Format "2006-01-02" }}</div>
       </div>
       {{ end }}
