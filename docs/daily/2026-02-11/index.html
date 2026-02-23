@@ -63,6 +63,9 @@
 
 
 
+
+
+
 <style>
 .with-sidebar { display: flex; gap: 0; max-width: 1400px; margin: 0 auto; }
 .sidebar-nav { width: 300px; flex: 0 0 300px; position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto; border-right: 1px solid #e5e7eb; background: #fafafa; padding: 16px 0; }
@@ -79,7 +82,7 @@
 .sidebar-year.open > .sidebar-chevron { transform: rotate(90deg); }
 .sidebar-months { display: none; padding-left: 16px; }
 .sidebar-year.open + .sidebar-months { display: block; }
-.sidebar-month { padding: 6px 10px; font-size: 13px; color: #6b7280; border-radius: 4px; cursor: pointer; text-decoration: none; display: block; }
+.sidebar-month { padding: 6px 10px; font-size: 13px; color: #6b7280; border-radius: 4px; cursor: pointer; display: block; text-decoration: none; }
 .sidebar-month:hover, .sidebar-month.active { background: #f3f4f6; color: #1a1dc3; }
 .sidebar-link { display: block; padding: 8px 10px; font-size: 13px; color: #6b7280; border-radius: 4px; text-decoration: none; }
 .sidebar-link:hover { background: #f3f4f6; color: #1a1dc3; }
@@ -88,140 +91,17 @@
 .article-title { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
 .article-meta { font-size: 13px; color: #9ca3af; }
 .article-content { font-size: 15px; line-height: 1.8; }
-.article-content h2 { margin-top: 24px; margin-bottom: 12px; font-size: 20px; }
-.article-content p { margin-bottom: 16px; }
 @media (max-width: 900px) { .with-sidebar { flex-direction: column; } .sidebar-nav { width: 100%; border-right: none; border-bottom: 1px solid #e5e7eb; } }
 </style>
 
 <div class="with-sidebar">
   <aside class="sidebar-nav">
-    
     <div class="sidebar-group">
       <div class="sidebar-group-header">📊 投资记录</div>
       <div class="sidebar-links">
-        <div class="sidebar-parent open" onclick="this.classList.toggle('open')">
+        <a href="/mydca/" class="sidebar-parent">
           <span>📈</span>
-          <span style="margin-left:8px">只买不卖定投三十年</span>
-          <i class="fas fa-chevron-right sidebar-chevron"></i>
-        </div>
-        <div class="sidebar-children">
-          
-            <div class="sidebar-year open" onclick="event.stopPropagation(); this.classList.toggle('open')">
-              2026 年
-              <i class="fas fa-chevron-right sidebar-chevron" style="font-size:10px;margin-left:auto;"></i>
-            </div>
-            <div class="sidebar-months">
-              
-                
-                
-                <div class="sidebar-month">2月</div>
-                <div style="padding-left:12px;">
-                  
-                    <a href="/xlfdWeb/daily/2026-02-23/" class="sidebar-link" style="background:#f3f4f6;">2/23</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-02-22/" class="sidebar-link" style="background:#f3f4f6;">2/22</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-02-21/" class="sidebar-link" style="background:#f3f4f6;">2/21</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-02-20/" class="sidebar-link" style="background:#f3f4f6;">2/20</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-02-19/" class="sidebar-link" style="background:#f3f4f6;">2/19</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-02-18/" class="sidebar-link" style="background:#f3f4f6;">2/18</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-02-17/" class="sidebar-link" style="background:#f3f4f6;">2/17</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-02-16/" class="sidebar-link" style="background:#f3f4f6;">2/16</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-02-14/" class="sidebar-link" style="background:#f3f4f6;">2/14</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-02-13/" class="sidebar-link" style="background:#f3f4f6;">2/13</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-02-12/" class="sidebar-link" style="background:#f3f4f6;">2/12</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-02-11/" class="sidebar-link active" style="background:#f3f4f6;">2/11</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-02-10/" class="sidebar-link" style="background:#f3f4f6;">2/10</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-02-09/" class="sidebar-link" style="background:#f3f4f6;">2/9</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-02-08/" class="sidebar-link" style="background:#f3f4f6;">2/8</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-02-07/" class="sidebar-link" style="background:#f3f4f6;">2/7</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-02-06/" class="sidebar-link" style="background:#f3f4f6;">2/6</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-02-05/" class="sidebar-link" style="background:#f3f4f6;">2/5</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-02-04/" class="sidebar-link" style="background:#f3f4f6;">2/4</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-02-03/" class="sidebar-link" style="background:#f3f4f6;">2/3</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-02-02/" class="sidebar-link" style="background:#f3f4f6;">2/2</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-02-01/" class="sidebar-link" style="background:#f3f4f6;">2/1</a>
-                  
-                </div>
-              
-                
-                
-                <div class="sidebar-month">1月</div>
-                <div style="padding-left:12px;">
-                  
-                    <a href="/xlfdWeb/daily/2026-01-31/" class="sidebar-link" style="background:#f3f4f6;">1/31</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-01-29/" class="sidebar-link" style="background:#f3f4f6;">1/29</a>
-                  
-                    <a href="/xlfdWeb/daily/2026-01-28/" class="sidebar-link" style="background:#f3f4f6;">1/28</a>
-                  
-                </div>
-              
-            </div>
-          
-        </div>
-      </div>
-    </div>
-    
-    
-    <div class="sidebar-group">
-      <div class="sidebar-group-header">💡 投资学习</div>
-      <div class="sidebar-links">
-        <a href="/mydca/insights/" class="sidebar-parent">
-          <span>📚</span>
-          <span style="margin-left:8px">整理与思考</span>
-        </a>
-      </div>
-    </div>
-    
-    
-    <div class="sidebar-group">
-      <div class="sidebar-group-header">💭 投资智慧</div>
-      <div class="sidebar-links">
-        <a href="/mydca/thoughts/" class="sidebar-parent">
-          <span>💡</span>
-          <span style="margin-left:8px">投资策略与哲思</span>
-        </a>
-      </div>
-    </div>
-    
-    
-    <div class="sidebar-group">
-      <div class="sidebar-group-header">⚡ 技术栈</div>
-      <div class="sidebar-links">
-        <a href="/mydca/tech/" class="sidebar-parent">
-          <span>💻</span>
-          <span style="margin-left:8px">技术洞见</span>
-        </a>
-      </div>
-    </div>
-    
-    
-    <div class="sidebar-group">
-      <div class="sidebar-group-header">📝 杂文随笔</div>
-      <div class="sidebar-links">
-        <a href="/mydca/essays/" class="sidebar-parent">
-          <span>📝</span>
-          <span style="margin-left:8px">杂文随笔</span>
+          <span style="margin-left:8px">返回主页</span>
         </a>
       </div>
     </div>
@@ -229,13 +109,13 @@
   
   <main class="main-content">
     <div class="article-header">
-      <h1 class="article-title">2026-02-11，定投第99天，收益率：-18.73%</h1>
+      <h1 class="article-title">2026-02-11，定投第98天</h1>
       <div class="article-meta">2026-02-11</div>
     </div>
     
     <div class="article-content">
       <h2 id="-今日行情">📊 今日行情</h2>
-<h3 id="截止-2026-02-11-063551">截止 <font color=grey size=5 ><strong>2026-02-11 06:35:51</strong></font></h3>
+<h3 id="截止-font-colorgrey-size5-2026-02-11-063551font">截止 <font color=grey size=5 ><strong>2026-02-11 06:35:51</strong></font></h3>
 <ul>
 <li>
 <p>🍖 全球加密市场总市值为：<font color=#FF0000 size=4 > <strong>2338552262868</strong></font> USDT，24h内变化：<font color=#FF0000 size=5 > <strong>-2.48%</strong></font></p>
@@ -246,21 +126,21 @@
 </ul>
 <h2 id="-我的持仓占比">🎨 我的持仓占比</h2>
 <div style="max-width: 980px; margin: 16px 0;">
-  <canvas id="chart-daily%5C2026-02-11.md-0" width="980" height="420" style="width:100%; height:420px;"></canvas>
+  <canvas id="chart-daily/2026-02-11.md-0" width="980" height="420" style="width:100%; height:420px;"></canvas>
 
   
-  <div id="chart-daily%5C2026-02-11.md-0-cfg" style="display:none;">
+  <div id="chart-daily/2026-02-11.md-0-cfg" style="display:none;">
     {"type":"doughnut","data":{"labels":["btc","eth","sol"],"datasets":[{"data":[6500.4416524,999.791872,2700],"backgroundColor":["#7A0C86","#952915","#9E8590"]}]},"options":{"plugins":{"title":{"display":true,"text":"小李飞刀的持仓环形分布图(单位：usdt)"},"legend":{"display":true,"position":"right"}},"maintainAspectRatio":false}}
   </div>
 
-  <div id="chart-daily%5C2026-02-11.md-0-err" style="margin-top:8px; color:#b00020; font-size:14px; white-space:pre-wrap;"></div>
+  <div id="chart-daily/2026-02-11.md-0-err" style="margin-top:8px; color:#b00020; font-size:14px; white-space:pre-wrap;"></div>
 </div>
 
 <script>
 (function () {
-  var canvasId = "chart-daily%5C2026-02-11.md-0";
-  var cfgId = "chart-daily%5C2026-02-11.md-0-cfg";
-  var errId = "chart-daily%5C2026-02-11.md-0-err";
+  var canvasId = "chart-daily\/2026-02-11.md-0";
+  var cfgId = "chart-daily\/2026-02-11.md-0-cfg";
+  var errId = "chart-daily\/2026-02-11.md-0-err";
 
   function showErr(msg) {
     var el = document.getElementById(errId);
@@ -352,21 +232,21 @@
 
 <h2 id="-我的定投收益分布">🍺 我的定投收益分布</h2>
 <div style="max-width: 980px; margin: 16px 0;">
-  <canvas id="chart-daily%5C2026-02-11.md-1" width="980" height="420" style="width:100%; height:420px;"></canvas>
+  <canvas id="chart-daily/2026-02-11.md-1" width="980" height="420" style="width:100%; height:420px;"></canvas>
 
   
-  <div id="chart-daily%5C2026-02-11.md-1-cfg" style="display:none;">
+  <div id="chart-daily/2026-02-11.md-1-cfg" style="display:none;">
     {"type":"bar","data":{"labels":["btc","eth","sol"],"datasets":[{"data":[-605.50217349,-203.10305417,-1101.77370984],"backgroundColor":["#7A0C86","#952915","#9E8590"]}]},"options":{"plugins":{"title":{"display":true,"text":"小李飞刀的持仓收益柱状图(单位：usdt)"},"legend":{"display":false,"position":"right"}},"maintainAspectRatio":false}}
   </div>
 
-  <div id="chart-daily%5C2026-02-11.md-1-err" style="margin-top:8px; color:#b00020; font-size:14px; white-space:pre-wrap;"></div>
+  <div id="chart-daily/2026-02-11.md-1-err" style="margin-top:8px; color:#b00020; font-size:14px; white-space:pre-wrap;"></div>
 </div>
 
 <script>
 (function () {
-  var canvasId = "chart-daily%5C2026-02-11.md-1";
-  var cfgId = "chart-daily%5C2026-02-11.md-1-cfg";
-  var errId = "chart-daily%5C2026-02-11.md-1-err";
+  var canvasId = "chart-daily\/2026-02-11.md-1";
+  var cfgId = "chart-daily\/2026-02-11.md-1-cfg";
+  var errId = "chart-daily\/2026-02-11.md-1-err";
 
   function showErr(msg) {
     var el = document.getElementById(errId);
@@ -460,7 +340,7 @@
 <blockquote>
 <p>定投 = 固定时间 + 固定金额 + 长期执行。不猜高点、不抄底、不预测行情。我于2021年 BTC 69000U 牛市最高点跟随Anbang对市值前100的币进行定投，定投持续了三年，于2024年取得了相当可观的盈利。所以我开始了新一轮的只买不卖三十年定投计划。</p>
 </blockquote>
-<h3 id="-我的定投策略制定于-2025-11-05今天是我践行定投策略的第-98-天">✏️ 我的定投策略制定于 <strong>2025-11-05</strong>，今天是我践行定投策略的第<font color=#FF0000 size=5 > <strong>98</strong></font> 天。</h3>
+<h3 id="-我的定投策略制定于-2025-11-05今天是我践行定投策略的第font-colorff0000-size5--98font-天">✏️ 我的定投策略制定于 <strong>2025-11-05</strong>，今天是我践行定投策略的第<font color=#FF0000 size=5 > <strong>98</strong></font> 天。</h3>
 <p>我将以月为单位，每月定投 <font size=3 ><strong> 500 </strong></font> USDT(根据行情不同会有调整，比如遇到黑天鹅我可能会进行大额抄底)。具体币种目前暂定为市值前50。这个策略覆盖的币种比较广，风险也极大，所以我会将每次定投的大头都用来买BTC、ETH、SOL、BNB等主流币，如果出现了好的投资标的时，我会进行小额押注。主打一个长期持有，主打一个稳。</p>
 <p>我进行只买不卖守币三十年的底层逻辑：币圈如今的市值相比较主流金融产品仍然是非常小。最近贵金属连番上涨，白银短短一个月内市值的涨幅都远超比特币总市值，非常夸张。由此可见，币圈在传统金融面前仍然属于早期，长期浸淫在币圈的人可能很难感知到这一点，所以，雷打不动定投可以说是保守派最为稳妥的投资策略。</p>
 <ul>

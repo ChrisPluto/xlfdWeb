@@ -1,10 +1,15 @@
 {{ define "main" }}
 
-{{ $dailyPages := where .Site.RegularPages "Section" "daily" }}
-{{ $insightsPages := where .Site.RegularPages "Section" "insights" }}
-{{ $thoughtsPages := where .Site.RegularPages "Section" "thoughts" }}
-{{ $techPages := where .Site.RegularPages "Section" "tech" }}
-{{ $essaysPages := where .Site.RegularPages "Section" "essays" }}
+{{ $startDate := time.AsTime "2025-11-05" }}
+{{ $postDate := .Date }}
+{{ $days := div (sub $postDate.Unix $startDate.Unix) 86400 | int }}
+{{ $days = add $days 1 }}
+{{ $yield := .Params.yield }}
+{{ $yieldStr := "" }}
+{{ if $yield }}
+  {{ $yieldStr = printf "，收益率：%s%%" ($yield | string) }}
+{{ end }}
+{{ $newTitle := printf "%s，定投第%d天%s" ($postDate.Format "2006-01-02") $days $yieldStr }}
 
 <style>
 .with-sidebar { display: flex; gap: 0; max-width: 1400px; margin: 0 auto; }
@@ -22,7 +27,7 @@
 .sidebar-year.open > .sidebar-chevron { transform: rotate(90deg); }
 .sidebar-months { display: none; padding-left: 16px; }
 .sidebar-year.open + .sidebar-months { display: block; }
-.sidebar-month { padding: 6px 10px; font-size: 13px; color: #6b7280; border-radius: 4px; cursor: pointer; text-decoration: none; display: block; }
+.sidebar-month { padding: 6px 10px; font-size: 13px; color: #6b7280; border-radius: 4px; cursor: pointer; display: block; text-decoration: none; }
 .sidebar-month:hover, .sidebar-month.active { background: #f3f4f6; color: #1a1dc3; }
 .sidebar-link { display: block; padding: 8px 10px; font-size: 13px; color: #6b7280; border-radius: 4px; text-decoration: none; }
 .sidebar-link:hover { background: #f3f4f6; color: #1a1dc3; }
@@ -31,85 +36,17 @@
 .article-title { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
 .article-meta { font-size: 13px; color: #9ca3af; }
 .article-content { font-size: 15px; line-height: 1.8; }
-.article-content h2 { margin-top: 24px; margin-bottom: 12px; font-size: 20px; }
-.article-content p { margin-bottom: 16px; }
 @media (max-width: 900px) { .with-sidebar { flex-direction: column; } .sidebar-nav { width: 100%; border-right: none; border-bottom: 1px solid #e5e7eb; } }
 </style>
 
 <div class="with-sidebar">
   <aside class="sidebar-nav">
-    <!-- 投资记录 -->
     <div class="sidebar-group">
       <div class="sidebar-group-header">📊 投资记录</div>
       <div class="sidebar-links">
-        <div class="sidebar-parent open" onclick="this.classList.toggle('open')">
+        <a href="/mydca/" class="sidebar-parent">
           <span>📈</span>
-          <span style="margin-left:8px">只买不卖定投三十年</span>
-          <i class="fas fa-chevron-right sidebar-chevron"></i>
-        </div>
-        <div class="sidebar-children">
-          {{ range $yg := (sort ($dailyPages.GroupByDate "2006") "Key" "desc") }}
-            <div class="sidebar-year open" onclick="event.stopPropagation(); this.classList.toggle('open')">
-              {{ $yg.Key }} 年
-              <i class="fas fa-chevron-right sidebar-chevron" style="font-size:10px;margin-left:auto;"></i>
-            </div>
-            <div class="sidebar-months">
-              {{ range $mg := (sort ($yg.Pages.GroupByDate "2006-01") "Key" "desc") }}
-                {{ $ym := $mg.Key }}
-                {{ $mn := (time (printf "%s-01" $ym)).Format "1" }}
-                <div class="sidebar-month">{{ $mn }}月</div>
-                <div style="padding-left:12px;">
-                  {{ range $mg.Pages }}
-                    <a href="{{ .RelPermalink }}" class="sidebar-link{{ if eq $.Permalink .Permalink }} active{{ end }}" style="background:#f3f4f6;">{{ .Date.Format "1/2" }}</a>
-                  {{ end }}
-                </div>
-              {{ end }}
-            </div>
-          {{ end }}
-        </div>
-      </div>
-    </div>
-    
-    <!-- 投资学习 -->
-    <div class="sidebar-group">
-      <div class="sidebar-group-header">💡 投资学习</div>
-      <div class="sidebar-links">
-        <a href="/mydca/insights/" class="sidebar-parent">
-          <span>📚</span>
-          <span style="margin-left:8px">整理与思考</span>
-        </a>
-      </div>
-    </div>
-    
-    <!-- 投资智慧 -->
-    <div class="sidebar-group">
-      <div class="sidebar-group-header">💭 投资智慧</div>
-      <div class="sidebar-links">
-        <a href="/mydca/thoughts/" class="sidebar-parent">
-          <span>💡</span>
-          <span style="margin-left:8px">投资策略与哲思</span>
-        </a>
-      </div>
-    </div>
-    
-    <!-- 技术栈 -->
-    <div class="sidebar-group">
-      <div class="sidebar-group-header">⚡ 技术栈</div>
-      <div class="sidebar-links">
-        <a href="/mydca/tech/" class="sidebar-parent">
-          <span>💻</span>
-          <span style="margin-left:8px">技术洞见</span>
-        </a>
-      </div>
-    </div>
-    
-    <!-- 杂文随笔 -->
-    <div class="sidebar-group">
-      <div class="sidebar-group-header">📝 杂文随笔</div>
-      <div class="sidebar-links">
-        <a href="/mydca/essays/" class="sidebar-parent">
-          <span>📝</span>
-          <span style="margin-left:8px">杂文随笔</span>
+          <span style="margin-left:8px">返回主页</span>
         </a>
       </div>
     </div>
@@ -117,7 +54,7 @@
   
   <main class="main-content">
     <div class="article-header">
-      <h1 class="article-title">{{ .Title }}</h1>
+      <h1 class="article-title">{{ $newTitle }}</h1>
       <div class="article-meta">{{ .Date.Format "2006-01-02" }}</div>
     </div>
     
