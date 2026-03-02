@@ -4,7 +4,7 @@
 <link rel="icon" type="image/png" href="/images/favicon.png">
 
   <meta charset="utf-8">
-  <title>Thoughts</title>
+  <title>我的定投策略</title>
 
   <link rel="stylesheet" href='/xlfdWeb/css/custom.css'>
 
@@ -75,20 +75,17 @@
 .sidebar-parent.open > .sidebar-chevron { transform: rotate(90deg); }
 .sidebar-children { display: none; padding-left: 20px; margin-top: 4px; }
 .sidebar-parent.open + .sidebar-children { display: block; }
-.sidebar-year { display: flex; align-items: center; padding: 8px 10px; border-radius: 6px; font-size: 14px; color: #4b5563; cursor: pointer; }
-.sidebar-year.open > .sidebar-chevron { transform: rotate(90deg); }
-.sidebar-months { display: none; padding-left: 16px; }
-.sidebar-year.open + .sidebar-months { display: block; }
-.sidebar-month { padding: 6px 10px; font-size: 13px; color: #6b7280; border-radius: 4px; cursor: pointer; display: block; text-decoration: none; }
-.sidebar-month:hover, .sidebar-month.active { background: #f3f4f6; color: #1a1dc3; }
-.sidebar-article { display: block; padding: 8px 10px; font-size: 13px; color: #6b7280; border-radius: 4px; text-decoration: none; cursor: pointer; }
+.sidebar-article { display: block; padding: 8px 10px; font-size: 13px; color: #6b7280; border-radius: 4px; text-decoration: none; }
 .sidebar-article:hover, .sidebar-article.active { background: #f3f4f6; color: #1a1dc3; }
+.sidebar-link { display: block; padding: 8px 10px; font-size: 13px; color: #6b7280; border-radius: 4px; text-decoration: none; }
+.sidebar-link:hover { background: #f3f4f6; color: #1a1dc3; }
 .main-content { flex: 1; min-width: 0; padding: 32px 40px; overflow-y: auto; max-height: calc(100vh - 64px); }
 .article-header { margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #e5e7eb; }
 .article-title { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
 .article-meta { font-size: 13px; color: #9ca3af; }
 .article-content { font-size: 15px; line-height: 1.8; }
-.loading { text-align: center; padding: 40px; color: #9ca3af; }
+.article-content h2 { margin-top: 24px; margin-bottom: 12px; font-size: 20px; }
+.article-content p { margin-bottom: 16px; }
 @media (max-width: 900px) { .with-sidebar { flex-direction: column; } .sidebar-nav { width: 100%; border-right: none; border-bottom: 1px solid #e5e7eb; } }
 </style>
 
@@ -98,34 +95,10 @@
     <div class="sidebar-group">
       <div class="sidebar-group-header">📊 投资记录</div>
       <div class="sidebar-links">
-        <div class="sidebar-parent open" onclick="this.classList.toggle('open')">
+        <a href="/mydca/" class="sidebar-parent">
           <span>📈</span>
           <span style="margin-left:8px">只买不卖定投三十年</span>
-          <i class="fas fa-chevron-right sidebar-chevron"></i>
-        </div>
-        <div class="sidebar-children">
-          
-            <div class="sidebar-year" onclick="event.stopPropagation(); this.classList.toggle('open')">
-              2026 年
-              <i class="fas fa-chevron-right sidebar-chevron" style="font-size:10px;margin-left:auto;"></i>
-            </div>
-            <div class="sidebar-months">
-              
-                
-                
-                <a href="/mydca/?month=2026-03" class="sidebar-month">3月</a>
-              
-                
-                
-                <a href="/mydca/?month=2026-02" class="sidebar-month">2月</a>
-              
-                
-                
-                <a href="/mydca/?month=2026-01" class="sidebar-month">1月</a>
-              
-            </div>
-          
-        </div>
+        </a>
       </div>
     </div>
     
@@ -133,10 +106,16 @@
     <div class="sidebar-group">
       <div class="sidebar-group-header">💡 投资学习</div>
       <div class="sidebar-links">
-        <a href="/mydca/insights/" class="sidebar-parent">
+        <div class="sidebar-parent open" onclick="this.classList.toggle('open')">
           <span>📚</span>
           <span style="margin-left:8px">整理与思考</span>
-        </a>
+          <i class="fas fa-chevron-right sidebar-chevron"></i>
+        </div>
+        <div class="sidebar-children">
+          
+            <div style="padding:8px 10px;font-size:13px;color:#9ca3af;">暂无文章</div>
+          
+        </div>
       </div>
     </div>
     
@@ -174,43 +153,30 @@
     </div>
   </aside>
   
-  <main class="main-content" id="main-content">
-    <div class="loading">点击左侧文章查看内容</div>
+  <main class="main-content">
+    <div class="article-header">
+      <h1 class="article-title">我的定投策略</h1>
+      <div class="article-meta">2025-11-05</div>
+    </div>
+    
+    <div class="article-content">
+      <p style="font-size:20px;"> 我的定投策略制定于 **2025-11-05**
+<p><code>定投 = 固定时间 + 固定金额 + 长期执行。不猜高点、不抄底、不预测行情。</code></p>
+<p>首先，此策略的前提是，定投的成本源自于你可支配资金构成的可接受全部亏损的部分，如果你是追求以小博大的高倍收益，那么这个策略完全不适合你。</p>
+<p>熊市讲究的是一个现金为王，细水长流，在流动性枯竭的阶段，拥有可供你随时支配的现金流极为重要，可参考21年Luna智能合约被攻击，lunc和Sol暴跌之际。</p>
+<p>所以，我会严格遵守定投计划以月为单位雷打不动进行定投，其目的就是避免过早买光筹码亦或是在无尽的等待中错失机会。</p>
+<p>说说成果。</p>
+<p>我于2021年 BTC 69000U 牛市最高点跟随Anbang对市值前100的币进行定投，定投持续了三年，于2024年结束。在我个人盈利构成中，也占据了相当可观的部分。所以今年我开始了新一轮的只买不卖三十年定投计划。`</p>
+<p>我将以月为单位，每月定投 1800 USDT ( 根据行情不同会有调整，若偶遇黑天鹅事件也会进行大额抄底 ) 。具体币种目前暂定为市值前50。这个策略覆盖的币种比较广，风险也极大，所以我会将每次定投的大头都用来买BTC、ETH、SOL、BNB等主流币，出现了好的投资标的，才会进行小额押注。主打一个长期持有，主打一个稳健。</p>
+<h1 id="底层逻辑">底层逻辑</h1>
+<p>我进行只买不卖守币三十年的底层逻辑：币圈如今的市值相比较主流金融产品仍然是非常小。最近贵金属连番上涨，白银短短一个月内市值的涨幅都远超比特币总市值，非常夸张。由此可见，币圈在传统金融面前仍然属于早期，长期浸淫在币圈的人可能很难感知到这一点，所以，雷打不动定投可以说是保守派最为稳妥的投资策略。</p>
+<p>熊市总是比牛市长，并且长很多很多……我将通过定投不断的在漫长的熊市中积聚能量。</p>
+<h1 id="参考指标">参考指标</h1>
+<p style="font-size:20px;">Fear and Greed Index       &&    AHR999 九神指数
+
+    </div>
   </main>
 </div>
-
-<script>
-document.querySelectorAll('.sidebar-article').forEach(el => {
-  el.addEventListener('click', function() {
-    const url = this.getAttribute('data-url');
-    if (!url) return;
-    
-    const contentArea = document.getElementById('main-content');
-    
-    document.querySelectorAll('.sidebar-article').forEach(a => a.classList.remove('active'));
-    this.classList.add('active');
-    
-    contentArea.innerHTML = '<div class="loading">加载中...</div>';
-    
-    fetch(url)
-      .then(res => res.text())
-      .then(html => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        const articleContent = doc.querySelector('.main-content');
-        
-        if (articleContent) {
-          contentArea.innerHTML = articleContent.innerHTML;
-        } else {
-          contentArea.innerHTML = '<div class="loading">加载失败</div>';
-        }
-      })
-      .catch(err => {
-        contentArea.innerHTML = '<div class="loading">加载失败</div>';
-      });
-  });
-});
-</script>
 
 
 </div>
