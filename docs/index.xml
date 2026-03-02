@@ -241,9 +241,9 @@
     </item>
     <item>
       <title>我的投资想法第一篇</title>
-      <link>https://chrispluto.github.io/xlfdWeb/thoughts/sample/</link>
+      <link>https://chrispluto.github.io/xlfdWeb/insights/sample/</link>
       <pubDate>Tue, 20 Jan 2026 00:00:00 +0900</pubDate>
-      <guid>https://chrispluto.github.io/xlfdWeb/thoughts/sample/</guid>
+      <guid>https://chrispluto.github.io/xlfdWeb/insights/sample/</guid>
       <description>&lt;h1 id=&#34;我的投资想法&#34;&gt;我的投资想法&lt;/h1&gt;&#xA;&lt;p&gt;这里将记录我的投资想法和思考&amp;hellip;&lt;/p&gt;&#xA;&lt;h2 id=&#34;关于定投&#34;&gt;关于定投&lt;/h2&gt;&#xA;&lt;p&gt;定投是最适合普通人的投资方式&amp;hellip;&lt;/p&gt;&#xA;&lt;h2 id=&#34;关于风险管理&#34;&gt;关于风险管理&lt;/h2&gt;&#xA;&lt;p&gt;永远不要投入超过你承受能力的资金&amp;hellip;&lt;/p&gt;</description>
     </item>
     <item>
@@ -251,7 +251,7 @@
       <link>https://chrispluto.github.io/xlfdWeb/tech/sample/</link>
       <pubDate>Sat, 10 Jan 2026 00:00:00 +0900</pubDate>
       <guid>https://chrispluto.github.io/xlfdWeb/tech/sample/</guid>
-      <description>&lt;h1 id=&#34;技术学习笔记&#34;&gt;技术学习笔记&lt;/h1&gt;&#xA;&lt;p&gt;这里将记录我的技术学习内容&amp;hellip;&lt;/p&gt;&#xA;&lt;h2 id=&#34;学习方向&#34;&gt;学习方向&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;前端开发&lt;/li&gt;&#xA;&lt;li&gt;区块链技术&lt;/li&gt;&#xA;&lt;li&gt;数据分析&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+      <description>&lt;h1 id=&#34;技术学习笔记&#34;&gt;技术学习笔记&lt;/h1&gt;&#xA;&lt;p&gt;这里将记录我的技术学习内容&amp;hellip;&lt;/p&gt;&#xA;&lt;h2 id=&#34;学习方向&#34;&gt;学习方向&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;机器学习&lt;/li&gt;&#xA;&lt;li&gt;区块链&lt;/li&gt;&#xA;&lt;li&gt;智能合约&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
     </item>
     <item>
       <title>我的定投策略</title>
